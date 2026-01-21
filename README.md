@@ -1,36 +1,39 @@
 [![GitHub license](https://img.shields.io/github/license/microsoft/AI-For-Beginners.svg)](https://github.com/microsoft/AI-For-Beginners/blob/main/LICENSE)
-# CM0091 - Artificial Intelligence
+# SI3014 - Redes Neuronales y Aprendizaje Profundo
 
-Course Repository CM0091 Artificial Intelligence at Universidad EAFIT
+Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
-| **INSTRUCTOR** | Juan David Martínez Vargas (jdmartinev@eafit.edu.co)   |
-| -------------- | -------------------------------- |
-| **LECTURES**   | Tuesday 7:30 – 9:00 33-203, <br> Thursday 7:30 - 9:00 33-202|
-| **MATERIAL**   | [repo](https://github.com/jdmartinev/ArtificialIntelligenceIM/)  
+| **INSTRUCTOR** | Juan David Martínez Vargas (jdmartinev@eafit.edu.co)<br>Raul Andrés Castañeda (racastaneq@eafit.edu.co) |
+|----------------|-------------------------------------------------------------------------------------------------------|
 
-![Summary of Introduction of AI content in a doodle](AI.jpg)
-> Sketchnote by [Tomomi Imura](https://twitter.com/girlie_mac)
-
-## Roadmap of the course
-
-**[Roadmap of the Course](/Lecture01/schedule.md)**
+![Summary of Introduction of DL content in a doodle](DL.jpg)
 
 
 ## We will learn in this course:
 
-* **Neural Networks** and **Deep Learning**, which are at the core of modern AI. We will illustrate the concepts behind these important topics using code in two of the most popular frameworks - [TensorFlow](http://Tensorflow.org) and [PyTorch](http://pytorch.org).
-* **Neural Architectures** for working with images and text. We will cover recent models but may be a bit lacking in the state-of-the-art.
-* State of the art Generative AI applications.
+* **Fundamentals of Deep Learning**, including fully connected neural networks, activation functions, loss functions, optimization, and regularization.
+* **Convolutional Neural Networks (CNNs)** for representation learning in image data.
+* **Representation Learning Models**, including autoencoders and variational autoencoders (VAEs).
+* **Generative Models**, with an introduction to Generative Adversarial Networks (GANs).
+* **Sequential Models**, such as recurrent neural networks (RNNs) for sequence and time-series data.
+* **Attention Mechanisms**, covering the core ideas behind attention and their role in modern neural architectures.
+* **Hands-on Implementation**, using **PyTorch** to build and train deep learning models from scratch.
 
+![Roadmap](roadmap.jpg)
 
 ## Evaluation
-| **Event**              | **Topic**                                  | **Material** | **Starting Date** | **Final Date** |
-|------------------------|-------------------------------------------|-------------|------------------|--------------|
-| **Assignment 1 (20%)** | Fully Connected Nets and Backpropagation  |             |     Week 05             |     Week 08          |
-| **Assignment 2 (20%)** | Application of Computer Vision            |             |     Week 08             |     Week 10          |
-| **Assignment 3 (20%)** | Application of Transformers and NLP       |             |     Week 10             |     Week 12          |
-| **Assignment 4 (20%)** | Application of GenAI                      |             |     Week 14             |     Week 16          |
-| **Final Project (20%)** | AI Applications                          |             |     Week 12             |     Week 18          |
+
+| Assessment Item          | Percentage | Week      |
+|--------------------------|------------|-----------|
+| Midterm I                | 10 %       | Week 4    |
+| Laboratory I             | 10 %       | Week 4    |
+| Quiz I                   | 5 %        | Week 7    |
+| Laboratory II            | 15 %       | Week 8    |
+| Laboratory + paper       | 20 %       | Week 12   |
+| Quiz II                  | 10 %       | Week 15   |
+| Laboratory III           | 10 %       | Week 16   |
+| Final Project            | 20 %       | Week 18   |
+
 
 ## Lectures
 
