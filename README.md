@@ -9,11 +9,6 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 ![Summary of Introduction of DL content in a doodle](DL.jpg)
 
 
-## Roadmap of the course
-
-![Roadmap of the DL class](roadmap.jpg)
-
-
 ## We will learn in this course:
 
 * **Fundamentals of Deep Learning**, including fully connected neural networks, activation functions, loss functions, optimization, and regularization.
@@ -24,6 +19,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 * **Attention Mechanisms**, covering the core ideas behind attention and their role in modern neural architectures.
 * **Hands-on Implementation**, using **PyTorch** to build and train deep learning models from scratch.
 
+![Roadmap](roadmap.jpg)
 
 ## Evaluation
 
