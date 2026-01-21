@@ -1,5 +1,5 @@
-[![GitHub license](https://img.shields.io/github/license/microsoft/AI-For-Beginners.svg)](https://github.com/microsoft/AI-For-Beginners/blob/main/LICENSE)
-# SI3015 - Artificial Intelligence
+[![GitHub license](DL.jpg)](https://github.com/microsoft/AI-For-Beginners/blob/main/LICENSE)
+# SI3014 - Redes Neuronales y Aprendizaje Profundo
 
 Course Repository CM0091 Artificial Intelligence at Universidad EAFIT
 
