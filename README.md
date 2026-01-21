@@ -11,7 +11,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 ## Roadmap of the course
 
-![Roadmap](roadmap.jpg)
+![Roadmap of the DL class](roadmap.jpg)
 
 
 ## We will learn in this course:
