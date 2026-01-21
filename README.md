@@ -16,9 +16,13 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 ## We will learn in this course:
 
-* **Neural Networks** and **Deep Learning**, which are at the core of modern AI. We will illustrate the concepts behind these important topics using code in two of the most popular frameworks - [TensorFlow](http://Tensorflow.org) and [PyTorch](http://pytorch.org).
-* **Neural Architectures** for working with images and text. We will cover recent models but may be a bit lacking in the state-of-the-art.
-* State of the art Generative AI applications.
+* **Fundamentals of Deep Learning**, including fully connected neural networks, activation functions, loss functions, optimization, and regularization.
+* **Convolutional Neural Networks (CNNs)** for representation learning in image data.
+* **Representation Learning Models**, including autoencoders and variational autoencoders (VAEs).
+* **Generative Models**, with an introduction to Generative Adversarial Networks (GANs).
+* **Sequential Models**, such as recurrent neural networks (RNNs) for sequence and time-series data.
+* **Attention Mechanisms**, covering the core ideas behind attention and their role in modern neural architectures.
+* **Hands-on Implementation**, using **PyTorch** to build and train deep learning models from scratch.
 
 
 ## Evaluation
