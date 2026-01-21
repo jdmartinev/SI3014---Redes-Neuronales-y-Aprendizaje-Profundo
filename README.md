@@ -1,12 +1,11 @@
 [![GitHub license](DL.jpg)](https://github.com/microsoft/AI-For-Beginners/blob/main/LICENSE)
 # SI3014 - Redes Neuronales y Aprendizaje Profundo
 
-Course Repository CM0091 Artificial Intelligence at Universidad EAFIT
+Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 | **INSTRUCTOR** | Juan David Martínez Vargas (jdmartinev@eafit.edu.co)   |
+|                | Raul Andrés Castañeda (racastaneq@eafit.edu.co)        |
 | -------------- | -------------------------------- |
-| **LECTURES**   | Tuesday 7:30 – 9:00 33-203, <br> Thursday 7:30 - 9:00 33-202|
-| **MATERIAL**   | [repo](https://github.com/jdmartinev/ArtificialIntelligenceIM/)  
 
 ![Summary of Introduction of AI content in a doodle](AI.jpg)
 > Sketchnote by [Tomomi Imura](https://twitter.com/girlie_mac)
