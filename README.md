@@ -38,8 +38,8 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 ## Lectures
 
 ### Lecture 01
-- [Lecture01.pdf](Lecture01/Lecture01.pdf) — Introduction to AI, DL and ML
-- [Lecture01b.pdf](Lecture01/Lecture01b.pdf) — Linear Algebra for DL
+- [Lecture01 - Intro.pdf](Lecture01/1. Introducción_DL_v1.pdf) — Introduction to AI, DL and ML
+- [Lecture01 - Operaciones básicas.pdf](Lecture01/2. Operaciones Basicas DL.pdf) — Linear Algebra for DL
 - Homework:
   - Review the [Pytorch in one our blog](https://sebastianraschka.com/teaching/pytorch-1h/)
   - Review the [pytorch basics notebook](Lecture01/notebooks/L01-what-is-pytorch)
