@@ -58,8 +58,8 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Linear Regression with Gradient Descent](Lectures/Lecture02/notebooks/L02_linear-regr-gd.ipynb)
     - [Perceptron with PyTorch](Lectures/Lecture02/notebooks/L02_perceptron-pytorch.ipynb)
   - HTML Versions:
-    - [RMSE Bivariate Simple](Lectures/Lecture02/notebooks/L02_rmse_bivariate_simple.html)
-    - [RMSE Univariate Simple](Lectures/Lecture02/notebooks/L02_rmse_univariate_simple.html)
+    - [RMSE Bivariate Simple](Lectures/Lecture02/notebooks/L02_mse_bivariate_simple.html)
+    - [RMSE Univariate Simple](Lectures/Lecture02/notebooks/L02_mse_univariate_simple.html)
 
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
