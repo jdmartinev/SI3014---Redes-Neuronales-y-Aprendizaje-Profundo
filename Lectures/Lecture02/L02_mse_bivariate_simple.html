@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding MSE - Bivariate Case</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .equation-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .equation-box strong {
+            font-size: 20px;
+        }
+        
+        .controls {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .value-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: white;
+            color: #667eea;
+            border: 3px solid white;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .animation-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .play-button {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            min-width: 150px;
+        }
+        
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .play-button.playing {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+        
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .speed-label {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 60px;
+        }
+        
+        .plots-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .plot-panel {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #e9ecef;
+        }
+        
+        .plot-panel h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .metric-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .metric-card.green {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .metric-card.purple {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .metric-small {
+            font-size: 24px;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .info-box h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .info-box p {
+            color: #34495e;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Understanding MSE in Linear Regression</h1>
+        <div class="subtitle">Bivariate Case: y = w₁·x + b</div>
+        
+        <div class="equation-box">
+            <div><strong>Model:</strong> ŷ = w₁ · x + b</div>
+            <div><strong>Loss Function (MSE):</strong> L(w₁, b) = (1/n) Σ (yᵢ - w₁·xᵢ - b)²</div>
+            <div><strong>Gradients:</strong> ∂L/∂w₁ = -(2/n) Σ xᵢ(yᵢ - w₁·xᵢ - b) &nbsp; | &nbsp; ∂L/∂b = -(2/n) Σ (yᵢ - w₁·xᵢ - b)</div>
+        </div>
+        
+        <div class="controls">
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>🎯 Adjust the weight (w₁)</span>
+                    <span class="value-badge" id="w1Display">1.00</span>
+                </div>
+                <input type="range" id="w1Slider" min="-3" max="3" step="0.01" value="1">
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>📍 Adjust the bias (b)</span>
+                    <span class="value-badge" id="bDisplay">0.00</span>
+                </div>
+                <input type="range" id="bSlider" min="-5" max="5" step="0.01" value="0">
+            </div>
+            
+            <div class="button-group">
+                <button onclick="jumpToOptimal()">✨ Jump to Optimal (w₁*, b*)</button>
+                <button onclick="generateNewData()">🔄 New Random Data</button>
+                <button onclick="resetParameters()">↺ Reset to (1.0, 0.0)</button>
+            </div>
+            
+            <div class="animation-controls">
+                <button class="play-button" id="playButton" onclick="toggleAnimation()">▶️ Play Animation</button>
+                <div class="speed-control">
+                    <span class="speed-label">Speed:</span>
+                    <input type="range" id="speedSlider" min="1" max="10" step="1" value="5" style="width: 150px;">
+                    <span class="value-badge" id="speedDisplay" style="font-size: 16px; padding: 5px 15px; min-width: 60px;">5x</span>
+                </div>
+                <div style="flex: 1; text-align: right; color: #7f8c8d; font-size: 14px;">
+                    💡 Watch (w₁, b) move in circles and see the 3D surface!
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-label">Current MSE Loss</div>
+                <div class="metric-value" id="currentMSE">0.00</div>
+            </div>
+            
+            <div class="metric-card blue">
+                <div class="metric-label">Gradient ∂L/∂w₁</div>
+                <div class="metric-value metric-small" id="gradW1">0.00</div>
+            </div>
+            
+            <div class="metric-card blue">
+                <div class="metric-label">Gradient ∂L/∂b</div>
+                <div class="metric-value metric-small" id="gradB">0.00</div>
+            </div>
+            
+            <div class="metric-card green">
+                <div class="metric-label">Gradient Magnitude</div>
+                <div class="metric-value metric-small" id="gradMag">0.00</div>
+            </div>
+            
+            <div class="metric-card purple">
+                <div class="metric-label">Optimal w₁*</div>
+                <div class="metric-value metric-small" id="optimalW1">0.00</div>
+            </div>
+            
+            <div class="metric-card purple">
+                <div class="metric-label">Optimal b*</div>
+                <div class="metric-value metric-small" id="optimalB">0.00</div>
+            </div>
+        </div>
+        
+        <div class="plots-grid">
+            <div class="plot-panel">
+                <h2>📍 The Data & Your Fit</h2>
+                <div id="dataPlot"></div>
+                <div class="info-box">
+                    <h3>What you're seeing:</h3>
+                    <p><span class="highlight">Blue dots</span> = Training data points (x, y)</p>
+                    <p><span class="highlight">Red line</span> = Your model ŷ = w₁·x + b</p>
+                    <p><span class="highlight">Green dashed</span> = The optimal fit (w₁*, b*)</p>
+                    <p><span class="highlight">Gray lines</span> = Errors (residuals) for each point</p>
+                </div>
+            </div>
+            
+            <div class="plot-panel">
+                <h2>🗺️ The Cost Function L(w₁, b) in 3D</h2>
+                <div id="costPlot"></div>
+                <div class="info-box">
+                    <h3>Understanding the 3D landscape:</h3>
+                    <p><span class="highlight">Colorful surface</span> = MSE for all (w₁, b) combinations</p>
+                    <p><span class="highlight">Red sphere</span> = Your current position</p>
+                    <p><span class="highlight">Red arrow</span> = Negative gradient (direction to descend)</p>
+                    <p><span class="highlight">Green star</span> = Optimal solution (lowest point in the bowl)</p>
+                    <p><strong>Key insight:</strong> This is a convex bowl! The gradient always points toward the minimum.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-box" style="margin-top: 30px; background: #fff3cd; border-left-color: #ffc107;">
+            <h3>🎓 Learning Goals:</h3>
+            <p><strong>1.</strong> See how changing <strong>w₁</strong> (slope) and <strong>b</strong> (intercept) affects the fit</p>
+            <p><strong>2.</strong> Understand that MSE creates a <strong>3D surface</strong> over parameter space</p>
+            <p><strong>3.</strong> Notice the <strong>convex bowl shape</strong> - there's exactly one global minimum!</p>
+            <p><strong>4.</strong> The gradient vector (∂L/∂w₁, ∂L/∂b) points uphill - we move opposite to minimize</p>
+            <p><strong>5.</strong> Both parameters work together - the optimal solution requires finding the right combination</p>
+        </div>
+    </div>
+
+    <script>
+        // Global data storage
+        let data = {
+            x: [],
+            y: [],
+            w1True: 1.5,
+            bTrue: 2.0
+        };
+        
+        // Generate random training data
+        function generateNewData() {
+            data.x = [];
+            data.y = [];
+            // Random true parameters
+            data.w1True = (Math.random() - 0.5) * 5;
+            data.bTrue = (Math.random() - 0.5) * 8;
+            
+            // Generate 40 data points
+            for (let i = 0; i < 40; i++) {
+                const x = (Math.random() - 0.5) * 10; // x between -5 and 5
+                const noise = (Math.random() - 0.5) * 3; // noise
+                const y = data.w1True * x + data.bTrue + noise;
+                data.x.push(x);
+                data.y.push(y);
+            }
+            
+            updatePlots();
+        }
+        
+        // Calculate MSE loss
+        function calculateMSE(w1, b) {
+            let sum = 0;
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w1 * data.x[i] + b;
+                const error = data.y[i] - pred;
+                sum += error * error;
+            }
+            return sum / data.x.length;
+        }
+        
+        // Calculate gradients
+        function calculateGradients(w1, b) {
+            let gradW1 = 0;
+            let gradB = 0;
+            
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w1 * data.x[i] + b;
+                const error = data.y[i] - pred;
+                gradW1 -= 2 * data.x[i] * error;
+                gradB -= 2 * error;
+            }
+            
+            return {
+                gradW1: gradW1 / data.x.length,
+                gradB: gradB / data.x.length
+            };
+        }
+        
+        // Calculate optimal parameters using closed form solution
+        function getOptimalParams() {
+            const n = data.x.length;
+            let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+            
+            for (let i = 0; i < n; i++) {
+                sumX += data.x[i];
+                sumY += data.y[i];
+                sumXY += data.x[i] * data.y[i];
+                sumXX += data.x[i] * data.x[i];
+            }
+            
+            const w1 = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+            const b = (sumY - w1 * sumX) / n;
+            
+            return {w1, b};
+        }
+        
+        // Update all visualizations
+        function updatePlots() {
+            const w1 = parseFloat(document.getElementById('w1Slider').value);
+            const b = parseFloat(document.getElementById('bSlider').value);
+            const mse = calculateMSE(w1, b);
+            const grads = calculateGradients(w1, b);
+            const optimal = getOptimalParams();
+            const gradMag = Math.sqrt(grads.gradW1**2 + grads.gradB**2);
+            
+            // Update metric displays
+            document.getElementById('w1Display').textContent = w1.toFixed(2);
+            document.getElementById('bDisplay').textContent = b.toFixed(2);
+            document.getElementById('currentMSE').textContent = mse.toFixed(3);
+            document.getElementById('gradW1').textContent = grads.gradW1.toFixed(3);
+            document.getElementById('gradB').textContent = grads.gradB.toFixed(3);
+            document.getElementById('gradMag').textContent = gradMag.toFixed(3);
+            document.getElementById('optimalW1').textContent = optimal.w1.toFixed(2);
+            document.getElementById('optimalB').textContent = optimal.b.toFixed(2);
+            
+            // Update data plot
+            updateDataPlot(w1, b, optimal);
+            
+            // Update 3D cost plot
+            updateCostPlot(w1, b, mse, grads, optimal);
+        }
+        
+        // Update the data and fit visualization
+        function updateDataPlot(w1, b, optimal) {
+            // Data points
+            const dataTrace = {
+                x: data.x,
+                y: data.y,
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Training Data',
+                marker: {
+                    color: '#3498db',
+                    size: 10,
+                    line: {color: '#2c3e50', width: 1}
+                }
+            };
+            
+            // Current fit line
+            const xRange = [-6, 6];
+            const yPredCurrent = xRange.map(x => w1 * x + b);
+            
+            const currentFitTrace = {
+                x: xRange,
+                y: yPredCurrent,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Your fit (w₁=${w1.toFixed(2)}, b=${b.toFixed(2)})`,
+                line: {color: '#e74c3c', width: 4}
+            };
+            
+            // Optimal fit line
+            const yPredOptimal = xRange.map(x => optimal.w1 * x + optimal.b);
+            
+            const optimalFitTrace = {
+                x: xRange,
+                y: yPredOptimal,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Optimal (w₁*=${optimal.w1.toFixed(2)}, b*=${optimal.b.toFixed(2)})`,
+                line: {color: '#2ecc71', width: 3, dash: 'dash'}
+            };
+            
+            // Error lines (residuals)
+            const errorTraces = [];
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w1 * data.x[i] + b;
+                errorTraces.push({
+                    x: [data.x[i], data.x[i]],
+                    y: [data.y[i], pred],
+                    mode: 'lines',
+                    type: 'scatter',
+                    showlegend: false,
+                    line: {color: '#95a5a6', width: 1, dash: 'dot'},
+                    hoverinfo: 'skip'
+                });
+            }
+            
+            const layout = {
+                title: '',
+                xaxis: {
+                    title: 'x',
+                    zeroline: true,
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: {
+                    title: 'y',
+                    zeroline: true,
+                    gridcolor: '#ecf0f1'
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.02,
+                    y: 0.98,
+                    bgcolor: 'rgba(255,255,255,0.9)',
+                    bordercolor: '#bdc3c7',
+                    borderwidth: 2
+                },
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'white',
+                height: 450
+            };
+            
+            const allTraces = [dataTrace, ...errorTraces, currentFitTrace, optimalFitTrace];
+            Plotly.newPlot('dataPlot', allTraces, layout, {responsive: true, displayModeBar: false});
+        }
+        
+        // Update the 3D cost function visualization
+        function updateCostPlot(w1, b, mse, grads, optimal) {
+            // Generate 3D surface grid
+            const w1Range = [];
+            const bRange = [];
+            const mseGrid = [];
+            
+            for (let wi = -3; wi <= 3; wi += 0.15) {
+                w1Range.push(wi);
+            }
+            for (let bi = -5; bi <= 5; bi += 0.2) {
+                bRange.push(bi);
+            }
+            
+            for (let i = 0; i < bRange.length; i++) {
+                const row = [];
+                for (let j = 0; j < w1Range.length; j++) {
+                    row.push(calculateMSE(w1Range[j], bRange[i]));
+                }
+                mseGrid.push(row);
+            }
+            
+            // Surface
+            const surface = {
+                x: w1Range,
+                y: bRange,
+                z: mseGrid,
+                type: 'surface',
+                name: 'MSE Loss Surface',
+                colorscale: 'Viridis',
+                showscale: true,
+                opacity: 0.9,
+                contours: {
+                    z: {
+                        show: true,
+                        usecolormap: true,
+                        highlightcolor: "#42f462",
+                        project: {z: true}
+                    }
+                }
+            };
+            
+            // Current position marker
+            const currentPoint = {
+                x: [w1],
+                y: [b],
+                z: [mse],
+                mode: 'markers',
+                type: 'scatter3d',
+                name: 'Current position',
+                marker: {
+                    color: 'red',
+                    size: 12,
+                    symbol: 'circle',
+                    line: {color: 'darkred', width: 2}
+                }
+            };
+            
+            // Optimal point marker
+            const optimalPoint = {
+                x: [optimal.w1],
+                y: [optimal.b],
+                z: [calculateMSE(optimal.w1, optimal.b)],
+                mode: 'markers',
+                type: 'scatter3d',
+                name: 'Optimal (w₁*, b*)',
+                marker: {
+                    color: 'lime',
+                    size: 12,
+                    symbol: 'diamond',
+                    line: {color: 'darkgreen', width: 2}
+                }
+            };
+            
+            // Negative gradient arrow (direction to minimize)
+            const arrowScale = 0.8;
+            const gradArrow = {
+                x: [w1, w1 - arrowScale * grads.gradW1],
+                y: [b, b - arrowScale * grads.gradB],
+                z: [mse, mse],
+                mode: 'lines',
+                type: 'scatter3d',
+                name: 'Negative gradient',
+                line: {color: 'red', width: 8}
+            };
+            
+            // Arrow head (cone)
+            const arrowHead = {
+                x: [w1 - arrowScale * grads.gradW1],
+                y: [b - arrowScale * grads.gradB],
+                z: [mse],
+                mode: 'markers',
+                type: 'scatter3d',
+                showlegend: false,
+                marker: {
+                    color: 'red',
+                    size: 8,
+                    symbol: 'diamond'
+                }
+            };
+            
+            const layout = {
+                title: `3D Loss Landscape | ||∇L|| = ${Math.sqrt(grads.gradW1**2 + grads.gradB**2).toFixed(3)}`,
+                scene: {
+                    xaxis: {title: 'w₁ (weight)', gridcolor: '#ddd'},
+                    yaxis: {title: 'b (bias)', gridcolor: '#ddd'},
+                    zaxis: {title: 'MSE Loss', gridcolor: '#ddd'},
+                    camera: {
+                        eye: {x: 1.5, y: 1.5, z: 1.2}
+                    },
+                    aspectmode: 'manual',
+                    aspectratio: {x: 1, y: 1.2, z: 0.8}
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.7,
+                    y: 0.95,
+                    bgcolor: 'rgba(255,255,255,0.8)'
+                },
+                height: 550
+            };
+            
+            Plotly.newPlot('costPlot', [surface, currentPoint, optimalPoint, gradArrow, arrowHead], layout, {responsive: true, displayModeBar: false});
+        }
+        
+        // Button handlers
+        function jumpToOptimal() {
+            const optimal = getOptimalParams();
+            document.getElementById('w1Slider').value = optimal.w1;
+            document.getElementById('bSlider').value = optimal.b;
+            updatePlots();
+        }
+        
+        function resetParameters() {
+            document.getElementById('w1Slider').value = 1.0;
+            document.getElementById('bSlider').value = 0.0;
+            updatePlots();
+        }
+        
+        // Event listeners
+        document.getElementById('w1Slider').addEventListener('input', updatePlots);
+        document.getElementById('bSlider').addEventListener('input', updatePlots);
+        
+        // Animation controls
+        let animationInterval = null;
+        let isPlaying = false;
+        let animationAngle = 0;
+        
+        function toggleAnimation() {
+            isPlaying = !isPlaying;
+            const playButton = document.getElementById('playButton');
+            
+            if (isPlaying) {
+                playButton.textContent = '⏸️ Pause Animation';
+                playButton.classList.add('playing');
+                startAnimation();
+            } else {
+                playButton.textContent = '▶️ Play Animation';
+                playButton.classList.remove('playing');
+                stopAnimation();
+            }
+        }
+        
+        function startAnimation() {
+            const speed = parseInt(document.getElementById('speedSlider').value);
+            const interval = 50; // Fixed interval for smooth animation
+            const angleStep = 0.05 * speed; // Angular step based on speed
+            
+            // Get center point (optimal parameters)
+            const optimal = getOptimalParams();
+            const radius1 = 1.5; // Radius in w1 direction
+            const radius2 = 2.0; // Radius in b direction
+            
+            animationInterval = setInterval(() => {
+                // Move in a circle around the optimal point
+                animationAngle += angleStep;
+                
+                const w1 = optimal.w1 + radius1 * Math.cos(animationAngle);
+                const b = optimal.b + radius2 * Math.sin(animationAngle);
+                
+                // Clamp to slider bounds
+                const w1Clamped = Math.max(-3, Math.min(3, w1));
+                const bClamped = Math.max(-5, Math.min(5, b));
+                
+                document.getElementById('w1Slider').value = w1Clamped;
+                document.getElementById('bSlider').value = bClamped;
+                updatePlots();
+            }, interval);
+        }
+        
+        function stopAnimation() {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+        }
+        
+        // Update speed display
+        document.getElementById('speedSlider').addEventListener('input', function() {
+            const speed = this.value;
+            document.getElementById('speedDisplay').textContent = speed + 'x';
+            
+            // Restart animation with new speed if playing
+            if (isPlaying) {
+                stopAnimation();
+                startAnimation();
+            }
+        });
+        
+        // Initialize
+        generateNewData();
+    </script>
+</body>
+</html>
