@@ -37,14 +37,19 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 ## Lectures
 
-- **Lecture 01 – Introduction to AI, Machine Learning, and Deep Learning**
-  - [Introduction](Lectures/Lecture01/Introduccion_DL.pdf)
-  - [Basic Operations](Lectures/Lecture01/Operaciones_Basicas_DL.pdf)
-
+ **Lecture 01 – Introduction to AI, Machine Learning, and Deep Learning**
+  - [Introduction to Deep Learning](Lectures/Lecture01/L01_Introduccion_DL.pdf)
+  - [Basic Operations in Deep Learning](Lectures/Lecture01/L01_Operaciones_Basicas_DL.pdf)
+  - Notebooks:
+    - [What is PyTorch](Lectures/Lecture01/notebooks/L01-what-is-pytorch.ipynb)
+    - [Broadcasting](Lectures/Lecture01/notebooks/L01_broadcasting.ipynb)
+    - [PyTorch Class - Linear Algebra](Lectures/Lecture01/notebooks/L01_Clase_PyToch_ALgebra_Lineal.ipynb)
+    - [Basic Operations - Linear Algebra in Deep Learning](Lectures/Lecture01/notebooks/Operaciones_Basicas_Algebra_Lineal_Deep_Learning.ipynb)
   - Homework:
-    - Review the [Pytorch in one our blog](https://sebastianraschka.com/teaching/pytorch-1h/)
-    - Review the [pytorch basics notebook](Lecture01/notebooks/L01-what-is-pytorch)
-    - Review the [broadcasting notebook](Lecture01/notebooks/L01_broadcasting.ipynb) 
+    - Review the [PyTorch in one hour blog](https://sebastianraschka.com/teaching/pytorch-1h/)
+    - Review the PyTorch basics notebook
+    - Review the broadcasting notebook
+    - [Additional Resources](Lectures/Lecture01/notebooks/links.md)
 
  **Lecture 02 – Linear Regression and Perceptrons**
   - [Lecture Notes](Lectures/Lecture02/Lecture02.pdf)
