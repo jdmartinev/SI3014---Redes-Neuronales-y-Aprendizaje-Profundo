@@ -41,10 +41,20 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   - [Introduction](Lectures/Lecture01/Introduccion_DL.pdf)
   - [Basic Operations](Lectures/Lecture01/Operaciones_Basicas_DL.pdf)
 
-- Homework:
-  - Review the [Pytorch in one our blog](https://sebastianraschka.com/teaching/pytorch-1h/)
-  - Review the [pytorch basics notebook](Lecture01/notebooks/L01-what-is-pytorch)
-  - Review the [broadcasting notebook](Lecture01/notebooks/L01_broadcasting.ipynb) 
+  - Homework:
+    - Review the [Pytorch in one our blog](https://sebastianraschka.com/teaching/pytorch-1h/)
+    - Review the [pytorch basics notebook](Lecture01/notebooks/L01-what-is-pytorch)
+    - Review the [broadcasting notebook](Lecture01/notebooks/L01_broadcasting.ipynb) 
+
+ **Lecture 02 – Linear Regression and Perceptrons**
+  - [Lecture Notes](Lectures/Lecture02/Lecture02.pdf)
+  - Notebooks:
+    - [Linear Regression with Normal Equations](Lectures/Lecture02/notebooks/L02_linear_regression_normal_equations.ipynb)
+    - [Linear Regression with Gradient Descent](Lectures/Lecture02/notebooks/L02_linear-regr-gd.ipynb)
+    - [Perceptron with PyTorch](Lectures/Lecture02/notebooks/L02_perceptron-pytorch.ipynb)
+  - HTML Versions:
+    - [RMSE Bivariate Simple](Lectures/Lecture02/notebooks/L02_rmse_bivariate_simple.html)
+    - [RMSE Univariate Simple](Lectures/Lecture02/notebooks/L02_rmse_univariate_simple.html)
 
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
