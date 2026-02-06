@@ -61,7 +61,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [MSE Bivariate Simple](Lectures/Lecture02/L02_mse_bivariate_simple.html)
     - [MSE Univariate Simple](Lectures/Lecture02/L02_mse_univariate_simple.html)
 
-  **Lecture 03 – Logistic and Softmax Regression
+  **Lecture 03 – Logistic and Softmax Regression**
   - [Lecture03.pdf](Lectures/Lecture03/Lecture03.pdf)
   - Notebooks:
     - [Gradient Descent](Lectures/Lecture03/notebooks/L03_GradientDescent.ipynb)
