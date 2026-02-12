@@ -119,3 +119,43 @@ A short written statement answering:
 - Any external resources used (include links if applicable)
 
 Transparency is required. AI assistance is allowed, but it must be declared.
+
+## Base Notebook (Kaggle) — Copy, Edit, and Run
+
+Use the official starter notebook as your base template:
+
+- **Starter notebook (Kaggle):** https://www.kaggle.com/code/juanmartinezv4399/dl-competition01
+
+You must **copy it in Kaggle**, adapt it to your approach, and submit **your edited version** as the final notebook deliverable.
+
+### Steps in Kaggle
+
+1. Open the starter notebook link above.
+2. Click **Copy & Edit** (or **Fork Notebook**, depending on Kaggle UI).
+3. Rename your notebook using the format:
+   - `DL-Competition01_<LastName>_<FirstName>`
+4. Verify dataset attachment:
+   - In the right panel, go to **Add Data** and ensure the competition dataset is attached.
+5. Edit the notebook sections marked as **TODO**:
+   - **Model definition**
+   - **Training loop / hyperparameters**
+   - **Validation + model selection**
+   - **Inference on `comp_test`**
+   - **CSV export**
+
+### Required outputs from the notebook
+
+Your notebook must produce:
+- Training/validation logs (loss + accuracy, or equivalent)
+- A saved submission file:
+  - `predictions.csv` with columns: `id,pred`
+
+### Exporting files from Kaggle
+
+Before submitting:
+1. Ensure `predictions.csv` is created by the notebook (typically saved under `/kaggle/working/`).
+2. In Kaggle, open the **Output** panel and download:
+   - Your final notebook (`.ipynb`)
+   - `predictions.csv`
+
+> Do not submit a notebook that only partially runs. It must run end-to-end on Kaggle.
