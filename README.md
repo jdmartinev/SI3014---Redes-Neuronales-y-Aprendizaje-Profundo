@@ -71,7 +71,8 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
    **Lecture 04 – Hello World in Deep Learning**
   - [Lecture04.pdf](Lectures/Lecture04/Lecture04.pdf)
   - Notebooks:
-  - 
+    - [MNIST Hello world](Lectures/Lecture04/notebooks/L4_mnist_RACQ.ipynb)
+   
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
   - [Google collaborative](https://colab.research.google.com/)
