@@ -68,6 +68,10 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Softmax Regression (MNIST)](Lectures/Lecture03/notebooks/L03_softmax-regression-mnist.ipynb)
     - [XNOR](Lectures/Lecture03/notebooks/L03_XNOR.ipynb)
 
+   **Lecture 04 – MUltilayer Perceptron**
+  - [Lecture Notes](Lectures/Lecture04/Lecture04.pdf)
+  - Notebooks:
+  - 
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
   - [Google collaborative](https://colab.research.google.com/)
