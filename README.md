@@ -69,7 +69,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [XNOR](Lectures/Lecture03/notebooks/L03_XNOR.ipynb)
 
    **Lecture 04 – Hello World in Deep Learning**
-  - [Lecture Notes](Lectures/Lecture04/Lecture04.pdf)
+  - [Lecture04.pdf](Lectures/Lecture04/Lecture04.pdf)
   - Notebooks:
   - 
 # Resources:
