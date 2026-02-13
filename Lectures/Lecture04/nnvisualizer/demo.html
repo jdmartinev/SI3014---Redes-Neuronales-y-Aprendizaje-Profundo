@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Visualizer - Demo</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .architecture {
+            text-align: center;
+            font-family: monospace;
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            line-height: 2;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .control-group {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .control-group h3 {
+            margin-top: 0;
+            color: #667eea;
+            font-size: 16px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        .value-display {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .output-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .output-panel {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .output-panel h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .gradient {
+            color: #48bb78;
+        }
+        .value {
+            color: #f6ad55;
+        }
+        #plotDiv {
+            margin: 20px 0;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        .button-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Neural Network Backpropagation Visualizer</h1>
+        <p class="subtitle">Interactive tool to understand forward and backward propagation</p>
+        
+        <div class="info-box">
+            <strong>📚 For the full interactive version:</strong> Download the Python files and run: 
+            <code>python nn_visualizer.py</code>
+            <br><br>
+            This HTML page is a simplified demo showing the concept. The full Python/Gradio version includes:
+            <ul>
+                <li>✅ Full backpropagation with all gradient calculations</li>
+                <li>✅ Interactive parameter sliders (15 parameters to adjust)</li>
+                <li>✅ Multiple activation functions (Tanh, ReLU, Sigmoid, Leaky ReLU)</li>
+                <li>✅ Real-time visualization updates</li>
+                <li>✅ Complete forward and backward pass details</li>
+                <li>✅ XOR dataset with 500 samples</li>
+            </ul>
+        </div>
+
+        <div class="architecture">
+            <strong>Network Architecture:</strong><br>
+            Input (2D) → Hidden₁ (2 neurons + Activation)<br>
+            ↓<br>
+            Hidden₂ (2 neurons + Activation)<br>
+            ↓<br>
+            Output (2 neurons + Softmax)<br>
+            ↓<br>
+            Cross-Entropy Loss
+        </div>
+
+        <div class="info-box">
+            <strong>🎯 What the full tool visualizes:</strong>
+            <ol>
+                <li><strong>Forward Pass:</strong> See input → z₁ → a₁ → z₂ → a₂ → z₃ → probabilities → loss</li>
+                <li><strong>Backward Pass:</strong> Watch gradients flow: ∂L/∂z₃ → ∂L/∂W₃, ∂L/∂b₃ → ∂L/∂a₂ → ∂L/∂z₂ → ... → ∂L/∂W₁, ∂L/∂b₁</li>
+                <li><strong>Representation Transformations:</strong> See how the network transforms the XOR pattern through each layer</li>
+                <li><strong>Decision Boundaries:</strong> Visualize what the network has learned</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <h2>Installation Instructions</h2>
+            <div style="background: #2d3748; color: white; padding: 20px; border-radius: 10px; display: inline-block; text-align: left;">
+                <strong>Step 1:</strong> Install dependencies<br>
+                <code style="color: #48bb78;">pip install gradio plotly numpy</code><br><br>
+                
+                <strong>Step 2:</strong> Run the application<br>
+                <code style="color: #48bb78;">python nn_visualizer.py</code><br><br>
+                
+                <strong>Step 3:</strong> Open browser to<br>
+                <code style="color: #48bb78;">http://localhost:7860</code>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>🔍 Key Educational Features:</strong>
+            <ul>
+                <li><strong>Gradient Flow Visualization:</strong> See exactly how gradients propagate backward through the network</li>
+                <li><strong>Activation Function Comparison:</strong> Switch between Tanh, ReLU, Sigmoid, and Leaky ReLU to see their effects on gradients</li>
+                <li><strong>Parameter Sensitivity:</strong> Adjust any of the 15 parameters and instantly see the impact</li>
+                <li><strong>Loss Computation:</strong> Understand how cross-entropy loss compares predictions to true labels</li>
+                <li><strong>Representation Learning:</strong> Watch how the network learns to separate the non-linearly separable XOR pattern</li>
+            </ul>
+        </div>
+
+        <div style="background: #fff5f5; border-left: 4px solid #f56565; padding: 20px; margin: 20px 0; border-radius: 5px;">
+            <strong>⚠️ Note:</strong> This is a static HTML demo page. For the full interactive experience with real-time parameter adjustment, 
+            gradient visualization, and complete backpropagation details, please run the Python/Gradio application.
+        </div>
+
+        <div class="button-group">
+            <button onclick="alert('Download the nn_visualizer.py file and run it with Python to use the full application!')">
+                🚀 Get Full Application
+            </button>
+            <button onclick="window.open('README.md', '_blank')">
+                📖 View Documentation
+            </button>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f0f4ff; border-radius: 10px;">
+            <h3>💡 What You'll Learn:</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div>
+                    <h4 style="color: #667eea;">🎓 For Students</h4>
+                    <ul>
+                        <li>How neurons transform data</li>
+                        <li>What activation functions do</li>
+                        <li>How backpropagation computes gradients</li>
+                        <li>Why we need hidden layers for XOR</li>
+                        <li>The effect of different parameters</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #667eea;">👨‍🏫 For Instructors</h4>
+                    <ul>
+                        <li>Demonstrate the chain rule visually</li>
+                        <li>Show vanishing/exploding gradients</li>
+                        <li>Compare activation functions</li>
+                        <li>Illustrate representation learning</li>
+                        <li>Explain loss function behavior</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
