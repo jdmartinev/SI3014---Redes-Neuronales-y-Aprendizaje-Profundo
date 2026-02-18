@@ -36,8 +36,6 @@ Train: /kaggle/input/intel-image-classification/seg_train/seg_train
 Val/Test source: /kaggle/input/intel-image-classification/seg_test/seg_test
 Blind competition test: /kaggle/input/intel-image-classification/seg_pred/seg_pred
 
-If you run locally, adapt paths accordingly. The expected folder structure is the standard ImageFolder format: one subfolder per class for labeled splits.
-
 ---
 
 ## Preprocessing (baseline)
