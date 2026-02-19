@@ -74,7 +74,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [MNIST Hello world](Lectures/Lecture04/notebooks/L4_mnist_RACQ.ipynb)
 
   **Lecture 05 – Backpropagation**
-  - [Lecture05.pdf](Lectures/Lecture05/6.Backpropagation_DL.pdf)
+  - [Lecture05.pdf](Lectures/Lecture05/Lecture05.pdf)
   - Notebooks:
     - [Backpropagation](Lectures/Lecture05/notebooks/L5_backpropagation_example.ipynb)
     - [Dropout](Lectures/Lecture05/notebooks/L5_Overfitting_DEMO.ipynb)
