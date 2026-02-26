@@ -78,6 +78,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   - Notebooks:
     - [Backpropagation](Lectures/Lecture05/notebooks/L5_backpropagation_example.ipynb)
     - [Dropout](Lectures/Lecture05/notebooks/L5_Overfitting_DEMO.ipynb)
+
+  **Lecture 06 – CNN - part one **
+  - [Lecture05.pdf](Lectures/Lecture06/CNN_DL.pdf)
+  - Notebooks:
+    - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
+    - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
    
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
