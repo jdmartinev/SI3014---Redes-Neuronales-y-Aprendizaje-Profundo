@@ -90,6 +90,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   - Notebooks:
     - [DataAugmentation](Lectures/Lecture07/notebooks/L07_a_asl_augmentation.ipynb)
     - [DataAugmentation-Predictions](Lectures/Lecture07/notebooks/L07_b_asl_predictions.ipynb)
+    - [Transfer learning](Lectures/Lecture07/notebooks/L07_a_doggy_door.ipynb)
    
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
