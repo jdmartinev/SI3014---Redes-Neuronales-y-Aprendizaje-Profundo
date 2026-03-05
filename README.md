@@ -85,6 +85,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
     - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
    
+  **Lecture 07 – Data Augmentation and Transfer Learning**
+  - [Lecture06.pdf](Lectures/Lecture07/Lecture07.pdf)
+  - Notebooks:
+    - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
+    - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
+   
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
   - [Google collaborative](https://colab.research.google.com/)
