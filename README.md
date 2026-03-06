@@ -72,6 +72,25 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   - [Lecture04.pdf](Lectures/Lecture04/Lecture04.pdf)
   - Notebooks:
     - [MNIST Hello world](Lectures/Lecture04/notebooks/L4_mnist_RACQ.ipynb)
+
+  **Lecture 05 – Backpropagation**
+  - [Lecture05.pdf](Lectures/Lecture05/Lecture05.pdf)
+  - Notebooks:
+    - [Backpropagation](Lectures/Lecture05/notebooks/L5_backpropagation_example.ipynb)
+    - [Dropout](Lectures/Lecture05/notebooks/L5_Overfitting_DEMO.ipynb)
+
+  **Lecture 06 – CNN - part one**
+  - [Lecture06.pdf](Lectures/Lecture06/Lecture06.pdf)
+  - Notebooks:
+    - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
+    - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
+   
+  **Lecture 07 – Data Augmentation and Transfer Learning**
+  - [Lecture07.pdf](Lectures/Lecture07/Lecture07.pdf)
+  - Notebooks:
+    - [DataAugmentation](Lectures/Lecture07/notebooks/L07_a_asl_augmentation.ipynb)
+    - [DataAugmentation-Predictions](Lectures/Lecture07/notebooks/L07_b_asl_predictions.ipynb)
+    - [Transfer learning](Lectures/Lecture07/notebooks/L07_a_doggy_door.ipynb)
    
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
