@@ -91,6 +91,15 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [DataAugmentation](Lectures/Lecture07/notebooks/L07_a_asl_augmentation.ipynb)
     - [DataAugmentation-Predictions](Lectures/Lecture07/notebooks/L07_b_asl_predictions.ipynb)
     - [Transfer learning](Lectures/Lecture07/notebooks/L07_a_doggy_door.ipynb)
+
+  **Lecture 08 – CNN - part Two AutoEncoders**
+  - [Lecture08_A.pdf](Lectures/Lecture08/Lecture08_A.pdf)
+  - [Lecture08_B.pdf](Lectures/Lecture08/Lecture08_B.pdf)
+  - [Lecture08_C.pdf](Lectures/Lecture08/Lecture08_C.pdf)
+  - Notebooks:
+    - [DataAugmentation](Lectures/Lecture07/notebooks/L07_a_asl_augmentation.ipynb)
+    - [DataAugmentation-Predictions](Lectures/Lecture07/notebooks/L07_b_asl_predictions.ipynb)
+    - [Transfer learning](Lectures/Lecture07/notebooks/L07_a_doggy_door.ipynb)
    
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
