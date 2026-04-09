@@ -107,7 +107,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   
   - Notebooks:
     - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
-    - [Prediction](Lectures/Lecture10/notebooks/Prediction)
+    - [Prediction](Lectures/Lecture10/notebooks/Predictions)
 
    
 # Resources:
