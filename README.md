@@ -101,6 +101,14 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [ConV-AutoEncoders](Lectures/Lecture08/notebooks/L08_ConvAE_pytorch.ipynb)
     - [VAR](Lectures/Lecture08/notebooks/L08_VAE_pytorch.ipynb)
     - [Speckle_noise_reduction](Lectures/Lecture08/notebooks/L08_Denoising_Autoencoder_Kaggle.ipynb)
+
+  **Lecture 10 – RNN - part one**
+  - [Lecture10.pdf](Lectures/Lecture10/Lecture10.pdf)
+  
+  - Notebooks:
+    - [RNN from scrath](Lectures/Lecture10/notebooks/scrath)
+    - [Prediction](Lectures/Lecture10/notebooks/Prediction)
+
    
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
