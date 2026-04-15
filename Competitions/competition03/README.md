@@ -25,15 +25,25 @@ Este paso es fundamental, ya que define la representación de entrada para los m
 
 ---
 
-### `02_baseline.ipynb` — Modelo Base
+### 2️⃣ `02_baseline.ipynb` — Modelo Base
 
-En este notebook se implementa un modelo base para la tarea, típicamente utilizando enfoques simples como:
+En este notebook se implementa un modelo base para la tarea utilizando un enfoque simple pero efectivo basado en embeddings.
 
-- Bag of Words (BoW) o representaciones agregadas  
-- Modelos lineales o redes feedforward  
-- Pipeline básico de entrenamiento y evaluación  
+El modelo consiste en:
 
-El objetivo es establecer un **punto de referencia (baseline)** contra el cual comparar modelos más avanzados.
+- Una **matriz de embeddings entrenables** que representa cada palabra del vocabulario  
+- Un esquema de **agregación por promedio (mean pooling)** sobre los embeddings de la secuencia  
+- Un modelo de clasificación (por ejemplo, una capa lineal) sobre la representación agregada  
+
+Este enfoque ignora el orden de las palabras, pero permite capturar información semántica básica de las secuencias.
+
+Además, el notebook incluye:
+
+- Pipeline de entrenamiento  
+- Evaluación del modelo  
+- Métricas de desempeño  
+
+El objetivo es establecer un **punto de referencia (baseline)** contra el cual comparar modelos secuenciales más avanzados como RNNs y LSTMs.
 
 ---
 
