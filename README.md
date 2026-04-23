@@ -112,6 +112,8 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
   **Lecture 10 – RNN - part one**
   - [Lecture10.pdf](Lectures/Lecture10/Lecture10.pdf)
+  - [Lecture10b.pdf](Lectures/Lecture10/Lecture10b.pdf)
+  - [Lecture10c.pdf](Lectures/Lecture10/Lecture10c.pdf)
   
   - Notebooks:
     - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
