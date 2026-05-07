@@ -124,7 +124,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 - Notebooks:
     - [Notebooks](Lectures/Lecture11/notebooks)
-    - [Prediction](Lectures/Lecture11/notebooks/Predictions)
+
       
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
