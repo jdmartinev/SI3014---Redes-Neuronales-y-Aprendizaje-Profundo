@@ -120,7 +120,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Prediction](Lectures/Lecture10/notebooks/Predictions)
 
   **Lecture 11 – Transformers**
-  - [Lecture11.pdf](Lectures/Lecture11/13.Transformers_DL.pdf)
+  - [Lecture11.pdf](Lectures/Lecture11/Lecture11_DL.pdf)
 
 - Notebooks:
     - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
