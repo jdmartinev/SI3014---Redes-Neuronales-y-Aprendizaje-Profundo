@@ -119,7 +119,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
     - [Prediction](Lectures/Lecture10/notebooks/Predictions)
 
-   
+  **Lecture 11 – Transformers**
+  - [Lecture11.pdf](Lectures/Lecture11/Lecture11.pdf)
+
+- Notebooks:
+    - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
+    - [Prediction](Lectures/Lecture10/notebooks/Predictions)
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
   - [Google collaborative](https://colab.research.google.com/)
