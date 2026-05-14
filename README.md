@@ -135,6 +135,8 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   - [Weights and Biases](https://wandb.ai/site)
  
   - [Lab04](https://huggingface.co/datasets/Yelp/yelp_review_full)
+ 
+  - 
 * Deep Learning books:
   - [Deep Learning](https://www.deeplearningbook.org/)
   - [Dive into Deep Learningas](https://d2l.ai/)
