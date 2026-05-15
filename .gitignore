@@ -2,3 +2,20 @@
 /Books/*
 /Clases/*
 /Docs/*
+
+# Datos y modelos
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.h5
+*.npy
+*.parquet
+*.zip
+*.tar.gz
+data/
+checkpoints/
+runs/
+
+# Thumbs
+Thumbs.db
