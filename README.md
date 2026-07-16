@@ -25,12 +25,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 | Assessment Item          | Percentage | Week      |
 |--------------------------|------------|-----------|
-| Midterm I                | 10 %       | Week 4    |
-| Laboratory I             | 10 %       | Week 4    |
-| Quiz I                   | 5 %        | Week 7    |
-| Laboratory II            | 15 %       | Week 8    |
-| Laboratory + paper       | 20 %       | Week 12   |
-| Quiz II                  | 10 %       | Week 15   |
+| Midterm I                | 20 %       | Week 4    |
+| Laboratory I             | 10 %       | Week 5    |
+| Quiz I                   | 10 %       | Week 7    |
+| Laboratory II            | 10 %       | Week 8    |
+| Quiz II                  | 10 %       | Week 12   |
+| Quiz III                 | 10 %       | Week 15   |
 | Laboratory III           | 10 %       | Week 16   |
 | Final Project            | 20 %       | Week 18   |
 
@@ -51,80 +51,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - Review the broadcasting notebook
     - [Additional Resources](Lectures/Lecture01/notebooks/links.md)
 
- **Lecture 02 – Linear Regression and Perceptrons**
-  - [Lecture Notes](Lectures/Lecture02/Lecture02.pdf)
-  - Notebooks:
-    - [Linear Regression with Normal Equations](Lectures/Lecture02/notebooks/L02_linear_regression_normal_equations.ipynb)
-    - [Linear Regression with Gradient Descent](Lectures/Lecture02/notebooks/L02_linear-regr-gd.ipynb)
-    - [Perceptron with PyTorch](Lectures/Lecture02/notebooks/L02_perceptron-pytorch.ipynb)
-  - HTML Versions:
-    - [MSE Bivariate Simple](Lectures/Lecture02/L02_mse_bivariate_simple.html)
-    - [MSE Univariate Simple](Lectures/Lecture02/L02_mse_univariate_simple.html)
-
-  **Lecture 03 – Logistic and Softmax Regression**
-  - [Lecture03.pdf](Lectures/Lecture03/Lecture03.pdf)
-  - Notebooks:
-    - [Gradient Descent](Lectures/Lecture03/notebooks/L03_GradientDescent.ipynb)
-    - [Softmax Regression (MNIST)](Lectures/Lecture03/notebooks/L03_softmax-regression-mnist.ipynb)
-    - [XNOR](Lectures/Lecture03/notebooks/L03_XNOR.ipynb)
-
-   **Lecture 04 – Hello World in Deep Learning**
-  - [Lecture04.pdf](Lectures/Lecture04/Lecture04.pdf)
-  - Notebooks:
-    - [MNIST Hello world](Lectures/Lecture04/notebooks/L4_mnist_RACQ.ipynb)
-
-  **Lecture 05 – Backpropagation**
-  - [Lecture05.pdf](Lectures/Lecture05/Lecture05.pdf)
-  - Notebooks:
-    - [Backpropagation](Lectures/Lecture05/notebooks/L5_backpropagation_example.ipynb)
-    - [Dropout](Lectures/Lecture05/notebooks/L5_Overfitting_DEMO.ipynb)
-
-  **Lecture 06 – CNN - part one**
-  - [Lecture06.pdf](Lectures/Lecture06/Lecture06.pdf)
-  - Notebooks:
-    - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
-    - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
-   
-  **Lecture 07 – Data Augmentation and Transfer Learning**
-  - [Lecture07.pdf](Lectures/Lecture07/Lecture07.pdf)
-  - Notebooks:
-    - [DataAugmentation](Lectures/Lecture07/notebooks/L07_a_asl_augmentation.ipynb)
-    - [DataAugmentation-Predictions](Lectures/Lecture07/notebooks/L07_b_asl_predictions.ipynb)
-    - [Transfer learning](Lectures/Lecture07/notebooks/L07_a_doggy_door.ipynb)
-
-  **Lecture 08 – CNN - part Two AutoEncoders**
-  - [Lecture08_A.pdf](Lectures/Lecture08/Lecture08_A.pdf)
-  - [Lecture08_B.pdf](Lectures/Lecture08/Lecture08_B.pdf)
-  - [Lecture08_C.pdf](Lectures/Lecture08/Lecture08_C.pdf)
-  - Notebooks:
-    - [AutoEncoder_pytorch](Lectures/Lecture08/notebooks/L08_Autoencoder_pytorch.ipynb)
-    - [ConV-AutoEncoders](Lectures/Lecture08/notebooks/L08_ConvAE_pytorch.ipynb)
-    - [VAR](Lectures/Lecture08/notebooks/L08_VAE_pytorch.ipynb)
-    - [Speckle_noise_reduction](Lectures/Lecture08/notebooks/L08_Denoising_Autoencoder_Kaggle.ipynb)
-
-  **Lecture 09 – GAN**
-  - [Lecture09A.pdf](Lectures/Lecture09/Lecture09a.pdf)
-  - [Lecture09B.pdf](Lectures/Lecture09/Lecture09b.pdf)
-  
-  - Notebooks:
-    - [VAE](Lectures/Lecture09/notebooks/L09_VAE_pytorch.ipynb)
-    - [GANS](Lectures/Lecture10/notebooks/L09_GANS_pytorch.ipynb)
-
-  **Lecture 10 – RNN - part one**
-  - [Lecture10.pdf](Lectures/Lecture10/Lecture10.pdf)
-  - [Lecture10b.pdf](Lectures/Lecture10/Lecture10b.pdf)
-  - [Lecture10c.pdf](Lectures/Lecture10/Lecture10c.pdf)
-  
-  - Notebooks:
-    - [RNN from scrath](Lectures/Lecture10/notebooks/scratch)
-    - [Prediction](Lectures/Lecture10/notebooks/Predictions)
-
-  **Lecture 11 – Transformers**
-  - [Lecture11.pdf](Lectures/Lecture11/Lecture11_DL.pdf)
-
-- Notebooks:
-    - [Notebooks](Lectures/Lecture11/notebooks)
-
+ 
       
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
