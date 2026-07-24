@@ -52,7 +52,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Additional Resources](Lectures/Lecture01/notebooks/links.md)
 
  **Lecture 02 – Linear Regression and Perceptrons**
-  - [Lecture Notes](Lectures/Lecture02/L02_Perceptrón_y_Regresión_Lineal_DL.pdf)
+  - [Regresión Lineal y Perceptrón](Lectures/Lecture02/L02_Perceptrón_y_Regresión_Lineal_DL.pdf)
   - Notebooks:
     - [Linear Regression with Normal Equations](Lectures/Lecture02/notebooks/L02_linear_regression_normal_equations.ipynb)
     - [Linear Regression with Gradient Descent](Lectures/Lecture02/notebooks/L02_linear-regr-gd.ipynb)
