@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding MSE - Univariate Case</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .equation-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .equation-box strong {
+            font-size: 20px;
+        }
+        
+        .controls {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .value-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: white;
+            color: #667eea;
+            border: 3px solid white;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .plots-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .plot-panel {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #e9ecef;
+        }
+        
+        .plot-panel h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .metric-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .metric-card.green {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .info-box h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .info-box p {
+            color: #34495e;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Understanding MSE in Linear Regression</h1>
+        <div class="subtitle">Univariate Case: y = wx (no bias)</div>
+        
+        <div class="equation-box">
+            <div><strong>Model:</strong> ŷ = w · x</div>
+            <div><strong>Loss Function (MSE):</strong> L(w) = (1/n) Σ (yᵢ - w·xᵢ)²</div>
+            <div><strong>Gradient:</strong> dL/dw = -(2/n) Σ xᵢ(yᵢ - w·xᵢ)</div>
+        </div>
+        
+        <div class="controls">
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>🎯 Adjust the weight (w)</span>
+                    <span class="value-badge" id="wDisplay">1.00</span>
+                </div>
+                <input type="range" id="wSlider" min="-3" max="3" step="0.01" value="1">
+            </div>
+            
+            <div class="button-group">
+                <button onclick="jumpToOptimal()">✨ Jump to Optimal w</button>
+                <button onclick="generateNewData()">🔄 New Random Data</button>
+                <button onclick="resetWeight()">↺ Reset w to 1.0</button>
+            </div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-label">Current MSE Loss</div>
+                <div class="metric-value" id="currentMSE">0.00</div>
+            </div>
+            
+            <div class="metric-card blue">
+                <div class="metric-label">Gradient (dL/dw)</div>
+                <div class="metric-value" id="currentGrad">0.00</div>
+            </div>
+            
+            <div class="metric-card green">
+                <div class="metric-label">Optimal w*</div>
+                <div class="metric-value" id="optimalW">0.00</div>
+            </div>
+        </div>
+        
+        <div class="plots-grid">
+            <div class="plot-panel">
+                <h2>📍 The Data & Your Fit</h2>
+                <div id="dataPlot"></div>
+                <div class="info-box">
+                    <h3>What you're seeing:</h3>
+                    <p><span class="highlight">Blue dots</span> = Training data points (x, y)</p>
+                    <p><span class="highlight">Red line</span> = Your current model ŷ = w·x</p>
+                    <p><span class="highlight">Green dashed</span> = The optimal fit (w*)</p>
+                    <p><span class="highlight">Gray lines</span> = Errors (residuals) for each point</p>
+                </div>
+            </div>
+            
+            <div class="plot-panel">
+                <h2>📉 The Cost Function L(w)</h2>
+                <div id="costPlot"></div>
+                <div class="info-box">
+                    <h3>Understanding the cost:</h3>
+                    <p><span class="highlight">Blue curve</span> = MSE for all possible values of w</p>
+                    <p><span class="highlight">Red dot</span> = Your current position (w, MSE)</p>
+                    <p><span class="highlight">Green line</span> = Tangent (gradient) at your position</p>
+                    <p><strong>Key insight:</strong> The gradient tells you the slope! If positive, move left (decrease w). If negative, move right (increase w).</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-box" style="margin-top: 30px; background: #fff3cd; border-left-color: #ffc107;">
+            <h3>🎓 Learning Goals:</h3>
+            <p><strong>1.</strong> See how changing <strong>w</strong> affects how well the line fits the data</p>
+            <p><strong>2.</strong> Understand that MSE measures the average squared error</p>
+            <p><strong>3.</strong> Notice that the cost function is <strong>convex</strong> (bowl-shaped) - there's only one minimum!</p>
+            <p><strong>4.</strong> The gradient points in the direction of steepest <em>increase</em> in loss</p>
+            <p><strong>5.</strong> To minimize loss, we move in the <strong>opposite direction</strong> of the gradient</p>
+        </div>
+    </div>
+
+    <script>
+        // Global data storage
+        let data = {
+            x: [],
+            y: [],
+            wTrue: 2.0
+        };
+        
+        // Generate random training data
+        function generateNewData() {
+            data.x = [];
+            data.y = [];
+            // Random true weight between -2.5 and 2.5
+            data.wTrue = (Math.random() - 0.5) * 5;
+            
+            // Generate 40 data points
+            for (let i = 0; i < 40; i++) {
+                const x = (Math.random() - 0.5) * 10; // x between -5 and 5
+                const noise = (Math.random() - 0.5) * 3; // noise
+                const y = data.wTrue * x + noise;
+                data.x.push(x);
+                data.y.push(y);
+            }
+            
+            updatePlots();
+        }
+        
+        // Calculate MSE loss
+        function calculateMSE(w) {
+            let sum = 0;
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w * data.x[i];
+                const error = data.y[i] - pred;
+                sum += error * error;
+            }
+            return sum / data.x.length;
+        }
+        
+        // Calculate gradient
+        function calculateGradient(w) {
+            let sum = 0;
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w * data.x[i];
+                const error = data.y[i] - pred;
+                sum -= 2 * data.x[i] * error;
+            }
+            return sum / data.x.length;
+        }
+        
+        // Calculate optimal w using closed form solution
+        function getOptimalW() {
+            let numerator = 0;
+            let denominator = 0;
+            
+            for (let i = 0; i < data.x.length; i++) {
+                numerator += data.x[i] * data.y[i];
+                denominator += data.x[i] * data.x[i];
+            }
+            
+            return numerator / denominator;
+        }
+        
+        // Update all visualizations
+        function updatePlots() {
+            const w = parseFloat(document.getElementById('wSlider').value);
+            const mse = calculateMSE(w);
+            const grad = calculateGradient(w);
+            const wOpt = getOptimalW();
+            
+            // Update metric displays
+            document.getElementById('wDisplay').textContent = w.toFixed(2);
+            document.getElementById('currentMSE').textContent = mse.toFixed(3);
+            document.getElementById('currentGrad').textContent = grad.toFixed(3);
+            document.getElementById('optimalW').textContent = wOpt.toFixed(2);
+            
+            // Update data plot
+            updateDataPlot(w, wOpt);
+            
+            // Update cost plot
+            updateCostPlot(w, mse, grad, wOpt);
+        }
+        
+        // Update the data and fit visualization
+        function updateDataPlot(w, wOpt) {
+            // Data points
+            const dataTrace = {
+                x: data.x,
+                y: data.y,
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Training Data',
+                marker: {
+                    color: '#3498db',
+                    size: 10,
+                    line: {color: '#2c3e50', width: 1}
+                }
+            };
+            
+            // Current fit line
+            const xRange = [-6, 6];
+            const yPredCurrent = xRange.map(x => w * x);
+            
+            const currentFitTrace = {
+                x: xRange,
+                y: yPredCurrent,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Your fit (w=${w.toFixed(2)})`,
+                line: {color: '#e74c3c', width: 4}
+            };
+            
+            // Optimal fit line
+            const yPredOptimal = xRange.map(x => wOpt * x);
+            
+            const optimalFitTrace = {
+                x: xRange,
+                y: yPredOptimal,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Optimal (w*=${wOpt.toFixed(2)})`,
+                line: {color: '#2ecc71', width: 3, dash: 'dash'}
+            };
+            
+            // Error lines (residuals)
+            const errorTraces = [];
+            for (let i = 0; i < data.x.length; i++) {
+                const pred = w * data.x[i];
+                errorTraces.push({
+                    x: [data.x[i], data.x[i]],
+                    y: [data.y[i], pred],
+                    mode: 'lines',
+                    type: 'scatter',
+                    showlegend: false,
+                    line: {color: '#95a5a6', width: 1, dash: 'dot'},
+                    hoverinfo: 'skip'
+                });
+            }
+            
+            const layout = {
+                title: '',
+                xaxis: {
+                    title: 'x',
+                    zeroline: true,
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: {
+                    title: 'y',
+                    zeroline: true,
+                    gridcolor: '#ecf0f1'
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.02,
+                    y: 0.98,
+                    bgcolor: 'rgba(255,255,255,0.9)',
+                    bordercolor: '#bdc3c7',
+                    borderwidth: 2
+                },
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'white',
+                height: 450
+            };
+            
+            const allTraces = [dataTrace, ...errorTraces, currentFitTrace, optimalFitTrace];
+            Plotly.newPlot('dataPlot', allTraces, layout, {responsive: true, displayModeBar: false});
+        }
+        
+        // Update the cost function visualization
+        function updateCostPlot(w, mse, grad, wOpt) {
+            // Generate cost curve
+            const wValues = [];
+            const mseValues = [];
+            
+            for (let wi = -3; wi <= 3; wi += 0.05) {
+                wValues.push(wi);
+                mseValues.push(calculateMSE(wi));
+            }
+            
+            // Cost curve
+            const costCurve = {
+                x: wValues,
+                y: mseValues,
+                mode: 'lines',
+                type: 'scatter',
+                name: 'MSE Loss L(w)',
+                line: {color: '#3498db', width: 4}
+            };
+            
+            // Current position
+            const currentPoint = {
+                x: [w],
+                y: [mse],
+                mode: 'markers',
+                type: 'scatter',
+                name: 'You are here',
+                marker: {
+                    color: '#e74c3c',
+                    size: 16,
+                    symbol: 'circle',
+                    line: {color: 'white', width: 3}
+                }
+            };
+            
+            // Tangent line (gradient visualization)
+            const tangentRange = 1.0;
+            const tangentX = [w - tangentRange, w + tangentRange];
+            const tangentY = tangentX.map(x => mse + grad * (x - w));
+            
+            const tangentLine = {
+                x: tangentX,
+                y: tangentY,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Gradient = ${grad.toFixed(2)}`,
+                line: {color: '#2ecc71', width: 3, dash: 'dash'}
+            };
+            
+            // Optimal w vertical line
+            const optimalLine = {
+                x: [wOpt, wOpt],
+                y: [0, Math.max(...mseValues) * 1.1],
+                mode: 'lines',
+                type: 'scatter',
+                name: 'Optimal w*',
+                line: {color: '#9b59b6', width: 2, dash: 'dot'}
+            };
+            
+            const layout = {
+                title: '',
+                xaxis: {
+                    title: 'Weight (w)',
+                    zeroline: true,
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: {
+                    title: 'MSE Loss',
+                    zeroline: false,
+                    gridcolor: '#ecf0f1'
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.02,
+                    y: 0.98,
+                    bgcolor: 'rgba(255,255,255,0.9)',
+                    bordercolor: '#bdc3c7',
+                    borderwidth: 2
+                },
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'white',
+                height: 450,
+                annotations: [
+                    {
+                        x: w,
+                        y: mse,
+                        xref: 'x',
+                        yref: 'y',
+                        text: grad > 0 ? 'Gradient > 0<br>Move LEFT ←' : 'Gradient < 0<br>Move RIGHT →',
+                        showarrow: true,
+                        arrowhead: 2,
+                        arrowsize: 1,
+                        arrowwidth: 2,
+                        arrowcolor: '#e74c3c',
+                        ax: grad > 0 ? -60 : 60,
+                        ay: -40,
+                        bgcolor: 'rgba(231, 76, 60, 0.8)',
+                        font: {color: 'white', size: 12},
+                        bordercolor: '#c0392b',
+                        borderwidth: 2,
+                        borderpad: 4
+                    }
+                ]
+            };
+            
+            Plotly.newPlot('costPlot', [costCurve, currentPoint, tangentLine, optimalLine], layout, {responsive: true, displayModeBar: false});
+        }
+        
+        // Button handlers
+        function jumpToOptimal() {
+            const wOpt = getOptimalW();
+            document.getElementById('wSlider').value = wOpt;
+            updatePlots();
+        }
+        
+        function resetWeight() {
+            document.getElementById('wSlider').value = 1.0;
+            updatePlots();
+        }
+        
+        // Event listener
+        document.getElementById('wSlider').addEventListener('input', updatePlots);
+        
+        // Initialize
+        generateNewData();
+    </script>
+</body>
+</html>
