@@ -309,8 +309,6 @@ Luego:
 
 $$
 \frac{\partial L}{\partial b}
-=============================
-
 \frac{\partial L}{\partial c}
 \frac{\partial c}{\partial b}
 $$
