@@ -90,8 +90,6 @@ $$
 
 $$
 \mathbf{w}
-==========
-
 \begin{bmatrix}
 w_1\
 w_2
