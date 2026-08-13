@@ -50,7 +50,7 @@ $$
 
 La siguiente figura representa un problema de clasificación binaria.
 
-![Clasificación binaria](figures/taller1/clasificacion_binaria.png)
+![Clasificación binaria](figs/taller1/Fig2.png)
 
 El modelo calcula:
 
@@ -116,7 +116,7 @@ Sin calcular exactamente la función sigmoide, ¿esperaría que fuera clasificad
 
 La siguiente figura representa la función de costo $J(w)$ de un modelo.
 
-![Función de costo](figures/taller1/funcion_costo.png)
+![Función de costo](figs/taller1/Fig3.png)
 
 Se muestran tres posiciones diferentes del parámetro $w$: **A**, **B** y **C**.
 
@@ -199,8 +199,7 @@ $$
 
 Tres modelos idénticos fueron entrenados utilizando diferentes valores de *learning rate*.
 
-![Learning rate](figures/taller1/learning_rate.png)
-
+![Learning rate](figs/taller1/Fig4.png)
 Las curvas **A**, **B** y **C** muestran la evolución de la función de costo.
 
 ### Preguntas
@@ -477,7 +476,7 @@ Sin realizar todos los cálculos exactamente, ¿esperaría un costo mayor o meno
 
 Se entrenó una red neuronal durante 100 épocas.
 
-![Training y Validation Loss](figures/taller1/training_validation.png)
+![Training y Validation Loss](figs/taller1/Fig5.png)
 
 La figura muestra el **Training Loss** y el **Validation Loss**.
 
