@@ -168,8 +168,6 @@ La regla de actualización es:
 
 $$
 w_{\text{nuevo}}
-================
-
 w-\eta\frac{\partial J}{\partial w}
 $$
 
