@@ -12,9 +12,9 @@ Justifique sus respuestas cuando se solicite.
 
 Se está entrenando un modelo de regresión lineal:
 
-[
+\[
 \hat{y}=wx+b
-]
+\]
 
 La siguiente figura muestra los datos y la recta obtenida por el modelo.
 
