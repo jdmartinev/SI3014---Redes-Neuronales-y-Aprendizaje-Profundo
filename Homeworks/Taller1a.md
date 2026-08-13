@@ -256,29 +256,8 @@ $$
 
 Considere el siguiente grafo computacional:
 
-```text
-       ×2           cuadrado           +3          cuadrado
 
-x ─────────► a ─────────────► b ─────────► c ───────────► L
-```
-
-Las operaciones son:
-
-$$
-a=2x
-$$
-
-$$
-b=a^2
-$$
-
-$$
-c=b+3
-$$
-
-$$
-L=c^2
-$$
+![Learning rate](figs/taller1/Fig6.png)
 
 Para esta observación:
 
