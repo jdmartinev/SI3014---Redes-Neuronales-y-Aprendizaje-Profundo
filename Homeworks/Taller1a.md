@@ -327,8 +327,6 @@ Finalmente:
 
 $$
 \frac{\partial L}{\partial x}
-=============================
-
 \frac{\partial L}{\partial a}
 \frac{\partial a}{\partial x}
 $$
@@ -366,8 +364,6 @@ La función Softmax está definida como:
 
 $$
 p_k
-===
-
 \frac{e^{z_k}}
 {\sum_{j=1}^{C}e^{z_j}}
 $$
