@@ -317,8 +317,6 @@ Continúe con:
 
 $$
 \frac{\partial L}{\partial a}
-=============================
-
 \frac{\partial L}{\partial b}
 \frac{\partial b}{\partial a}
 $$
