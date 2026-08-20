@@ -80,7 +80,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Useful Links](Lectures/Lecture03/notebooks/links.md)
 
 **Lecture 04 – Hello World - Deep Learning
-- [Lecture 04a – Hello World - MNIST](Lectures/Lecture04/L04_Lecture_a.pdf.pdf)
+- [Lecture 04a – Hello World - MNIST](Lectures/Lecture04/L04_Lecture_a.pdf)
 
  - Notebooks:
    - [Linear Regression with Normal Equations](Lectures/Lecture02/notebooks/L04_MNIST_HelloWorld_DL.ipynb)
