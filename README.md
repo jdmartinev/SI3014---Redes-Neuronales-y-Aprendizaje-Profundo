@@ -67,17 +67,17 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Lecture 03b – Feedforward Neural Networks](Lectures/Lecture03/Lecture03b.pdf)
 - [Lecture 03c – Backpropagation](Lectures/Lecture03/Lecture03c.pdf)
 - [Lecture 03d – Backpropagation II](Lectures/Lecture03/Lecture03d.pdf)
- - Notebooks:
-- [Logistic Regression](Lectures/Lecture03/notebooks/L03_softmax-regression-mnist.ipynb)
-- [Feedforward Neural Network Examples](Lectures/Lecture03/notebooks/FFNNs/)
-- [Neural Network Backpropagation Visualizer](Lectures/Lecture03/notebooks/neural_network_backprop_visualizer_colab.ipynb)
-- [Autograd Examples](Lectures/Lecture03/notebooks/Autograd/)
-- [Useful Links](Lectures/Lecture03/notebooks/links.md)
+- Notebooks:
+  - [Logistic Regression](Lectures/Lecture03/notebooks/L03_softmax-regression-mnist.ipynb)
+  - [Feedforward Neural Network Examples](Lectures/Lecture03/notebooks/FFNNs/)
+  - [Neural Network Backpropagation Visualizer](Lectures/Lecture03/notebooks/neural_network_backprop_visualizer_colab.ipynb)
+  - [Autograd Examples](Lectures/Lecture03/notebooks/Autograd/)
+  - [Useful Links](Lectures/Lecture03/notebooks/links.md)
 
 **Lecture 04 – Hello World - Deep Learning**
 - [Lecture 04a – Hello World - MNIST](Lectures/Lecture04/L04_Lecture_a.pdf)
 
- - Notebooks:
+- Notebooks:
    - [MNIST Example](Lectures/Lecture04/notebooks/L04_MNIST_HelloWorld_DL.ipynb)
       
 # Resources:
