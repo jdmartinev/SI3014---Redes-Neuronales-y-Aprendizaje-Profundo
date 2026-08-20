@@ -62,7 +62,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [MSE Bivariate Simple](Lectures/Lecture02/L02_mse_bivariate_simple.html)
     - [MSE Univariate Simple](Lectures/Lecture02/L02_mse_univariate_simple.html)
    
- **Lecture 03 – Logistic Regression, Feedforward Neural Networks and Backpropagation
+ **Lecture 03 – Logistic Regression, Feedforward Neural Networks and Backpropagation**
 - [Lecture 03a – Logistic Regression and Softmax](Lectures/Lecture03/Lecture03a.pdf)
 - [Lecture 03b – Feedforward Neural Networks](Lectures/Lecture03/Lecture03b.pdf)
 - [Lecture 03c – Backpropagation](Lectures/Lecture03/Lecture03c.pdf)
@@ -74,7 +74,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Autograd Examples](Lectures/Lecture03/notebooks/Autograd/)
 - [Useful Links](Lectures/Lecture03/notebooks/links.md)
 
-**Lecture 04 – Hello World - Deep Learning
+**Lecture 04 – Hello World - Deep Learning**
 - [Lecture 04a – Hello World - MNIST](Lectures/Lecture04/L04_Lecture_a.pdf)
 
  - Notebooks:
