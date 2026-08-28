@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dataset y DataLoader en PyTorch</title>
+<style>
+:root{
+  --bg:#f6f8fb; --card:#ffffff; --text:#1b2330; --muted:#5d6978;
+  --line:#dfe5ec; --accent:#2855d9; --soft:#eef3ff; --code:#111827;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text); background:var(--bg); line-height:1.58;
+}
+header{
+  background:linear-gradient(135deg,#17233f,#2855d9);
+  color:white; padding:46px 6vw 38px;
+}
+header .wrap{max-width:1400px;margin:auto}
+h1{font-size:clamp(2rem,4vw,3.6rem);line-height:1.05;margin:0 0 12px}
+header p{max-width:900px;font-size:1.12rem;opacity:.92;margin:0}
+main{max-width:1400px;margin:auto;padding:28px 4vw 64px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.full{grid-column:1/-1}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:18px;
+  padding:24px 26px;
+}
+h2{margin:0 0 12px;font-size:1.45rem}
+h3{margin:22px 0 8px}
+p{margin:8px 0 14px}
+code{
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  background:#f0f2f5;padding:.12rem .32rem;border-radius:5px
+}
+pre{
+  overflow:auto;background:var(--code);color:#f7fafc;
+  border-radius:14px;padding:18px 20px;line-height:1.45
+}
+pre code{background:transparent;padding:0}
+.callout{
+  border-left:5px solid var(--accent); background:var(--soft);
+  padding:14px 18px; border-radius:10px; margin:14px 0;
+}
+.diagram{
+  font-family:"SFMono-Regular",Consolas,monospace;
+  white-space:pre; overflow:auto; background:#fbfcfe;
+  border:1px dashed #bcc6d3; padding:20px; border-radius:14px;
+}
+.flow{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0
+}
+.node{
+  background:white;border:2px solid #aab7ca;border-radius:12px;padding:12px 16px;
+  min-width:130px;text-align:center;font-weight:700
+}
+.arrow{font-size:1.55rem;color:var(--muted)}
+.kicker{
+  text-transform:uppercase;letter-spacing:.09em;font-size:.78rem;font-weight:800;color:var(--accent)
+}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f4f6f9}
+.small{font-size:.92rem;color:var(--muted)}
+.eq{
+  text-align:center;font-size:1.35rem;padding:18px;background:#fafbfc;border-radius:12px;
+  font-family:Georgia,serif
+}
+ol,ul{padding-left:1.25rem}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  header{padding:34px 5vw 30px}
+  main{padding:20px 4vw 45px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker" style="color:#dce6ff">PyTorch · Conceptos fundamentales</div>
+    <h1>Dataset y DataLoader</h1>
+    <p>Qué hace cada componente, cómo se conectan internamente y qué ocurre realmente cuando escribimos <code style="background:rgba(255,255,255,.16);color:white">for x, y in loader</code>.</p>
+  </div>
+</header>
+
+<main>
+<div class="grid">
+
+<section class="card full">
+  <div class="kicker">Idea central</div>
+  <h2>Dataset define ejemplos; DataLoader organiza cómo llegan al modelo</h2>
+  <div class="flow">
+    <div class="node">Sampler</div><div class="arrow">→</div>
+    <div class="node">Dataset</div><div class="arrow">→</div>
+    <div class="node">collate_fn</div><div class="arrow">→</div>
+    <div class="node">Batch</div><div class="arrow">→</div>
+    <div class="node">Modelo</div>
+  </div>
+  <div class="callout"><strong>Dataset:</strong> “¿Qué ejemplo corresponde al índice <em>i</em>?”<br><strong>DataLoader:</strong> “¿Cómo selecciono, cargo y agrupo esos ejemplos?”</div>
+</section>
+
+<section class="card">
+  <div class="kicker">1 · Dataset</div>
+  <h2>Índice → ejemplo</h2>
+  <div class="eq">i → (x<sub>i</sub>, y<sub>i</sub>)</div>
+  <p>Un Dataset típico implementa dos operaciones esenciales:</p>
+  <pre><code>len(dataset)      # __len__()
+dataset[i]        # __getitem__(i)</code></pre>
+  <p>Por ejemplo:</p>
+  <pre><code>class MyDataset(Dataset):
+    def __init__(self, X, y):
+        self.X = X
+        self.y = y
+
+    def __len__(self):
+        return len(self.y)
+
+    def __getitem__(self, idx):
+        return self.X[idx], self.y[idx]</code></pre>
+  <div class="callout">El Dataset devuelve <strong>un ejemplo</strong>, no un batch.</div>
+</section>
+
+<section class="card">
+  <div class="kicker">2 · DataLoader</div>
+  <h2>Ejemplos → batches</h2>
+  <p>Con <code>batch_size=4</code>, el DataLoader hace conceptualmente:</p>
+  <pre><code>indices = [0, 1, 2, ..., N-1]
+
+for start in range(0, N, 4):
+    batch_indices = indices[start:start+4]
+
+    samples = [
+        dataset[i]
+        for i in batch_indices
+    ]
+
+    batch = collate(samples)
+    yield batch</code></pre>
+  <p class="small">PyTorch implementa esto de forma más sofisticada, pero este es el modelo mental correcto.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">3 · shuffle</div>
+  <h2>El Dataset no se desordena</h2>
+  <p><code>dataset[27]</code> sigue significando “dame el ejemplo 27”. Lo que cambia es el orden de los índices.</p>
+  <div class="diagram">shuffle=False
+0, 1, 2, 3, 4, 5, 6, ...
+
+shuffle=True
+481, 7, 1920, 43, 991, ...</div>
+  <p>Conceptualmente, esa responsabilidad pertenece al <strong>Sampler</strong>.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">4 · Sampler</div>
+  <h2>¿Qué índices visitar?</h2>
+  <p>El Sampler produce índices, no datos.</p>
+  <div class="diagram">SequentialSampler
+0, 1, 2, 3, 4, ...
+
+RandomSampler
+42, 7, 91, 3, 15, ...
+
+WeightedRandomSampler
+índices con probabilidades distintas</div>
+  <p>Esto permite estrategias como sobremuestreo de clases raras o sampling personalizado.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">5 · BatchSampler</div>
+  <h2>Índices → grupos de índices</h2>
+  <p>Si el Sampler produce:</p>
+  <div class="diagram">17, 3, 94, 21, 8, 51, 10, 74, ...</div>
+  <p>con <code>batch_size=4</code>, el BatchSampler forma:</p>
+  <div class="diagram">[17, 3, 94, 21]
+[8, 51, 10, 74]
+...</div>
+</section>
+
+<section class="card">
+  <div class="kicker">6 · __getitem__</div>
+  <h2>Los índices se convierten en ejemplos</h2>
+  <pre><code>dataset[17]
+dataset[3]
+dataset[94]
+dataset[21]</code></pre>
+  <p>Si cada llamada devuelve <code>(image, label)</code>, todavía tenemos cuatro ejemplos individuales. Falta agruparlos.</p>
+</section>
+
+<section class="card full">
+  <div class="kicker">7 · collate_fn</div>
+  <h2>Lista de ejemplos → batch de tensores</h2>
+  <div class="grid" style="gap:16px">
+    <div>
+      <p>Cada imagen:</p>
+      <div class="diagram">[3, 32, 32]
+[3, 32, 32]
+[3, 32, 32]
+[3, 32, 32]</div>
+    </div>
+    <div>
+      <p>Después de <code>collate_fn</code>:</p>
+      <div class="diagram">[4, 3, 32, 32]</div>
+      <p>Las etiquetas pasan de escalares a:</p>
+      <div class="diagram">tensor([3, 7, 1, 4])</div>
+    </div>
+  </div>
+  <div class="eq">Batch de imágenes = [B, C, H, W]</div>
+</section>
+
+<section class="card full">
+  <div class="kicker">8 · Flujo completo</div>
+  <h2>Qué ocurre realmente dentro de un DataLoader</h2>
+  <div class="diagram">                         DataLoader
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ▼              ▼              ▼
+           Sampler      BatchSampler      workers
+              │              │
+              │ índices      │ grupos
+              └───────┬──────┘
+                      ▼
+                  Dataset
+                      │
+               __getitem__()
+                      │
+                      ▼
+              ejemplos individuales
+                      │
+                      ▼
+                  collate_fn
+                      │
+                      ▼
+                    batch
+                      │
+                      ▼
+                    modelo</div>
+</section>
+
+<section class="card">
+  <div class="kicker">9 · drop_last</div>
+  <h2>¿Qué pasa con el último batch?</h2>
+  <p>Si tenemos 10 ejemplos y <code>batch_size=4</code>:</p>
+  <div class="diagram">drop_last=False
+4 + 4 + 2
+
+drop_last=True
+4 + 4</div>
+  <p>El batch incompleto se descarta solo cuando <code>drop_last=True</code>.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">10 · workers</div>
+  <h2>Paralelizar la carga</h2>
+  <p>Con <code>num_workers=0</code>, el proceso principal carga los datos.</p>
+  <p>Con varios workers:</p>
+  <div class="diagram">DataLoader
+ ├── worker 1 → dataset[i]
+ ├── worker 2 → dataset[j]
+ ├── worker 3 → dataset[k]
+ └── worker 4 → dataset[m]</div>
+  <p>Es útil cuando abrir archivos o aplicar transformaciones cuesta tiempo.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">11 · pin_memory</div>
+  <h2>CPU → GPU</h2>
+  <p><code>pin_memory=True</code> puede ayudar a hacer más eficiente la transferencia de batches desde CPU hacia GPU.</p>
+  <pre><code>images = images.to(
+    device,
+    non_blocking=True
+)</code></pre>
+  <p class="small">No modifica el contenido de los datos; es una optimización del pipeline.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">12 · transforms</div>
+  <h2>¿Dónde ocurre el preprocessing?</h2>
+  <pre><code>def __getitem__(self, idx):
+    image = load_image(idx)
+
+    if self.transform:
+        image = self.transform(image)
+
+    return image, label</code></pre>
+  <div class="callout">Las transformaciones normalmente ocurren dentro del Dataset cuando el DataLoader solicita un ejemplo.</div>
+</section>
+
+<section class="card full">
+  <div class="kicker">13 · Train / Validation / Test</div>
+  <h2>Las responsabilidades cambian según la partición</h2>
+  <div class="grid" style="gap:16px">
+    <div class="card" style="padding:18px">
+      <strong>Train</strong>
+      <ul><li>augmentation</li><li><code>shuffle=True</code></li><li>optimización del modelo</li></ul>
+    </div>
+    <div class="card" style="padding:18px">
+      <strong>Validation / Test</strong>
+      <ul><li>sin augmentations aleatorias</li><li><code>shuffle=False</code></li><li>evaluación reproducible</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="kicker">14 · Estratificación</div>
+  <h2>Preservar proporciones de clase</h2>
+  <p>En clasificación, una partición estratificada intenta conservar las proporciones de las etiquetas.</p>
+  <pre><code>train_idx, val_idx = train_test_split(
+    indices,
+    test_size=0.2,
+    random_state=42,
+    stratify=labels
+)</code></pre>
+  <p>Después podemos crear <code>Subset</code> o vistas del mismo dataset con transforms diferentes.</p>
+</section>
+
+<section class="card">
+  <div class="kicker">15 · Entrenamiento</div>
+  <h2>Lo que oculta el `for`</h2>
+  <pre><code>for images, labels in train_loader:
+    predictions = model(images)
+    loss = criterion(predictions, labels)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+  <p>La primera línea oculta todo el pipeline de sampling, carga y batching.</p>
+</section>
+
+<section class="card full">
+  <div class="kicker">16 · Resumen</div>
+  <h2>Mapa mental</h2>
+  <table>
+    <thead><tr><th>Componente</th><th>Responsabilidad</th></tr></thead>
+    <tbody>
+      <tr><td><code>Dataset</code></td><td>Define cómo obtener un ejemplo.</td></tr>
+      <tr><td><code>__len__</code></td><td>Número de ejemplos.</td></tr>
+      <tr><td><code>__getitem__</code></td><td>Recupera un ejemplo.</td></tr>
+      <tr><td><code>Sampler</code></td><td>Decide qué índices visitar.</td></tr>
+      <tr><td><code>BatchSampler</code></td><td>Agrupa índices.</td></tr>
+      <tr><td><code>collate_fn</code></td><td>Convierte una lista de ejemplos en un batch.</td></tr>
+      <tr><td><code>DataLoader</code></td><td>Coordina sampling, carga, batching y workers.</td></tr>
+      <tr><td><code>shuffle</code></td><td>Cambia el orden de muestreo.</td></tr>
+      <tr><td><code>batch_size</code></td><td>Número de ejemplos por batch.</td></tr>
+      <tr><td><code>drop_last</code></td><td>Descarta el último batch incompleto.</td></tr>
+      <tr><td><code>num_workers</code></td><td>Paraleliza carga/preprocesamiento.</td></tr>
+      <tr><td><code>pin_memory</code></td><td>Puede facilitar transferencias CPU → GPU.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card full">
+  <div class="kicker">17 · Para discutir en clase</div>
+  <h2>Preguntas rápidas</h2>
+  <ol>
+    <li>¿Por qué <code>shuffle</code> pertenece conceptualmente al DataLoader y no al Dataset?</li>
+    <li>¿Qué ocurre si los ejemplos tienen tamaños distintos y usamos el <code>collate_fn</code> por defecto?</li>
+    <li>¿Cuándo escribiríamos un <code>collate_fn</code> personalizado?</li>
+    <li>¿Por qué usar <code>RandomCrop</code> en train pero no en validation?</li>
+    <li>¿Cuál es la diferencia conceptual entre <code>Dataset</code> y <code>Sampler</code>?</li>
+    <li>¿Por qué aumentar <code>num_workers</code> no garantiza mayor velocidad?</li>
+  </ol>
+</section>
+
+</div>
+</main>
+</body>
+</html>
