@@ -84,9 +84,9 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Lecture 05a – CNN](Lectures/Lecture05/Lecture05.pdf)
 
 - Notebooks:
-   - [Kernels](Lectures/Lecture06/notebooks/L6_CNN_Kernels_Explination.ipynb)
-   - [CNN](Lectures/Lecture06/notebooks/L06_ConvNetsPyTorch.ipynb)
-   - [CIFAR - Example](Lectures/Lecture06/notebooks/L06_CNN-CIFAR-10.ipynb)
+   - [Kernels](Lectures/Lecture05/notebooks/L6_CNN_Kernels_Explination.ipynb)
+   - [CNN](Lectures/Lecture05/notebooks/L06_ConvNetsPyTorch.ipynb)
+   - [CIFAR - Example](Lectures/Lecture05/notebooks/L06_CNN-CIFAR-10.ipynb)
 
       
 # Resources:
