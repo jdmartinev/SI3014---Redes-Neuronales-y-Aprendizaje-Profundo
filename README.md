@@ -88,6 +88,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
    - [CNN](Lectures/Lecture05/notebooks/L06_ConvNetsPyTorch.ipynb)
    - [CIFAR - Example](Lectures/Lecture05/notebooks/L06_CNN-CIFAR-10.ipynb)
 
+**Lecture 06 – Optimizers** 
+- [Lecture 06 – Optimizers](Lectures/Lecture06/L06_Optimi_DL.pdf)
+
+- Notebooks:
+   - [SGD-Momentum](Lectures/Lecture06/notebooks/sgd-scheduler-momentum.ipynb)
+
       
 # Resources:
 * Computational resources: I strongly recommend creating (free) accounts on the following platforms:
