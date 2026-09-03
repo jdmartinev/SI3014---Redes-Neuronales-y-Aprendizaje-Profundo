@@ -80,7 +80,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - Notebooks:
    - [MNIST Example](Lectures/Lecture04/notebooks/L04_MNIST_HelloWorld_DL.ipynb)
 
-**Lecture 05 – Convolutionals CNN - part one**
+**Lecture 05 – Convolutionals CNN - part one** 
 - [Lecture 05a – CNN](Lectures/Lecture05/Lecture05.pdf)
 
 - Notebooks:
