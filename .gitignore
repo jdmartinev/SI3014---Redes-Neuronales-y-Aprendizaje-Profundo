@@ -2,6 +2,7 @@
 /Books/*
 /Clases/*
 /Docs/*
+/competitions/*
 
 # Datos y modelos
 *.pt
