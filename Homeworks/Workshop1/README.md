@@ -16,7 +16,7 @@ Participants must join the competition before accessing the competition data fro
 
 A starter notebook is available here:
 
-**[SI3014 Tiny ImageNet Competition — Starter Notebook](https://www.kaggle.com/code/juanmartinezv4399/si3014-tinyimagenetcompetition)**
+**[SI3014 Tiny ImageNet Competition — Starter Notebook](https://www.kaggle.com/code/juanmartinezv4399/si3014-tinyimagenet-competition)**
 
 Recommended workflow:
 
