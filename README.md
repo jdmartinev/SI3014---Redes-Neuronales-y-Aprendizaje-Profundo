@@ -99,7 +99,9 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Lecture 07b – U-Nets](Lectures/Lecture07/Lecture07b.pdf)
 
 - Notebooks:
-   - [U-Net for denoising](Lectures/Lecture07/notebooks/L6_CNN_Kernels_Explination.ipynb)
+   - [AE for denoising](Lectures/Lecture07/notebooks/L08_ConvAE_pytorch.ipynb)
+   - [U-Net for denoising](Lectures/Lecture07/notebooks/L08_Denoising_UNET_Kaggle.ipynb)
+
 
  
 **Workshop01 - CNNs**
