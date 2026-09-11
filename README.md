@@ -80,7 +80,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - Notebooks:
    - [MNIST Example](Lectures/Lecture04/notebooks/L04_MNIST_HelloWorld_DL.ipynb)
 
-**Lecture 05 – Convolutionals CNN - part one** 
+**Lecture 05 – Convolutionals CNN** 
 - [Lecture 05a – CNN](Lectures/Lecture05/Lecture05.pdf)
 
 - Notebooks:
@@ -93,6 +93,14 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 
 - Notebooks:
    - [SGD-Momentum](Lectures/Lecture06/notebooks/sgd-scheduler-momentum.ipynb)
+
+**Lecture 07 – AutoEncoders and U-Nets** 
+- [Lecture 07a – AutoEncoders](Lectures/Lecture07/Lecture07a.pdf)
+- [Lecture 07b – U-Nets](Lectures/Lecture07/Lecture07b.pdf)
+
+- Notebooks:
+   - [U-Net for denoising](Lectures/Lecture07/notebooks/L6_CNN_Kernels_Explination.ipynb)
+
  
 **Workshop01 - CNNs**
 - [Workshop 01](Homeworks/Workshop1/README.md)
