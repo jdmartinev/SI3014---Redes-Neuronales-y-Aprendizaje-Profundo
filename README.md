@@ -103,13 +103,13 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
    - [U-Net for denoising](Lectures/Lecture07/notebooks/L08_Denoising_UNET_Kaggle.ipynb)
 
 **Lecture 08 – Data Augmentation and Transfer Learning** 
-- [Lecture 08a – Data Augmentation and Transfer Learning](Lectures/Lecture08/L07_a_asl_augmentation.ipybn)
-    - [DataAugmentation-Predictions](Lectures/Lecture08/notebooks/L07_b_asl_predictions.ipynb)
-    - [Transfer learning](Lectures/Lecture08/notebooks/L07_a_doggy_door.ipynb)
+- [Lecture 08a – Data Augmentation and Transfer Learning](Lectures/Lecture08/L08_Lecture_a.pdf)
+
     - 
 - Notebooks:
-   - [DataAugmentation](Lectures/Lecture08/notebooks/L08_ConvAE_pytorch.ipynb)
-   - [U-Net for denoising](Lectures/Lecture07/notebooks/L08_Denoising_UNET_Kaggle.ipynb)
+   - [DataAugmentation](Lectures/Lecture08/notebooks/L07_a_asl_augmentation.ipybn)
+    - [DataAugmentation-Predictions](Lectures/Lecture08/notebooks/L07_b_asl_predictions.ipynb)
+    - [Transfer learning](Lectures/Lecture08/notebooks/L07_a_doggy_door.ipynb)
 
  
 **Workshop01 - CNNs**
