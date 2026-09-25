@@ -120,6 +120,9 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
  
 **Workshop01 - CNNs**
 - [Workshop 01](Homeworks/Workshop1/README.md)
+  
+**Workshop02 - Transfer Learning**
+- [Workshop 02](Homeworks/Workshop2/Laboratorio#2-DL.pdf)
 
       
 # Resources:
