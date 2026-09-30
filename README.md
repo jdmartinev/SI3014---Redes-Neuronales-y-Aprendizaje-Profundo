@@ -92,7 +92,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
 - [Lecture 06 – Optimizers](Lectures/Lecture06/L06_Optimi_DL.pdf)
 
 - Notebooks:
-   - [SGD-Momentum](Lectures/Lecture06/notebooks/sgd-scheduler-momentum.ipynb)
+   - [SGD-Momentum](Lectures/Lecture06/notebooks/optimizers/sgd-scheduler-momentum.ipynb)
 
 **Lecture 07 – AutoEncoders and U-Nets** 
 - [Lecture 07a – AutoEncoders](Lectures/Lecture07/Lecture07a.pdf)
