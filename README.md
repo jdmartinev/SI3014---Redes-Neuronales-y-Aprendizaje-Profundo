@@ -104,7 +104,7 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
    - [AE](Lectures/Lecture07/notebooks/L07_VAE_pytorch.ipynb)
 
 **Lecture 08 – Data Augmentation and Transfer Learning** 
-- [Lecture 08a – Data Augmentation and Transfer Learning](Lectures/Lecture08/L08_Lecture_a.pdf)
+- [Lecture 08a – Data Augmentation and Transfer Learning](Lectures/Lecture08/L08_Lecture.pdf)
 
 - Notebooks:
    - [DataAugmentation](Lectures/Lecture08/notebooks/L07_a_asl_augmentation.ipybn)
