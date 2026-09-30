@@ -112,12 +112,12 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [Transfer learning](Lectures/Lecture08/notebooks/L07_a_doggy_door.ipynb)
 
 **Lecture 09 – GAN**
-  - [Lecture09A.pdf](Lectures/Lecture09/Lecture09a.pdf)
-  - [Lecture09B.pdf](Lectures/Lecture09/Lecture09b.pdf)
+  - [VAE](Lectures/Lecture09/Lecture09a.pdf)
+  - [GAN](Lectures/Lecture09/Lecture09b.pdf)
   
   - Notebooks:
-    - [VAE](Lectures/Lecture09/notebooks/L09_VAE_pytorch.ipynb)
-    - [GANS](Lectures/Lecture10/notebooks/L09_GANS_pytorch.ipynb)
+    - [VAE](Lectures/Lecture09/notebooks/L08_VAE_pytorch.ipynb)
+    - [GANS](Lectures/Lecture10/notebooks/L09_GANS_Pytorch.ipynb)
  
 **Workshop01 - CNNs**
 - [Workshop 01](Homeworks/Workshop1/README.md)
