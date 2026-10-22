@@ -120,7 +120,9 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
     - [GANS](Lectures/Lecture09/notebooks/L09_GANS_Pytorch.ipynb)
    
  **Lecture 10 – RNNs**
-  - [RNNs](Lectures/Lecture10)
+  - [RNNs](Lectures/Lecture10/Lecture10.pdf)
+  - [LSTM](Lectures/Lecture10/Lecture10c.pdf)
+  - [Texto]((Lectures/Lecture10/Lecture10b.pdf))
   
   - Notebooks:
     - [RNNs](Lectures/Lecture19/notebooks)
