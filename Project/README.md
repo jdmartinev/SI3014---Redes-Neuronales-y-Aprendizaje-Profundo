@@ -46,11 +46,6 @@ Con el propósito de conocer y revisar oportunamente el alcance de los proyectos
 
 Los objetivos deberán formularse de manera clara, coherente y verificable, procurando que exista una relación directa entre el problema planteado, la metodología propuesta y los resultados que se esperan obtener.
 
-### Instrucciones para el envío
-
-- **Destinatario:** correo electrónico del profesor.
-- **Asunto:** `Proyecto Final – Grupo #XX – Objetivos del proyecto`.
-
 ## 4. Lineamientos para la sustentación oral
 
 Cada grupo dispondrá de un máximo de **15 minutos de presentación**, seguidos de **5 minutos destinados a preguntas**.
