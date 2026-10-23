@@ -38,7 +38,7 @@ En Deep Learning, obtener una buena métrica de desempeño no es suficiente si n
 
 ## 3. Entrega preliminar: título y objetivos del proyecto
 
-Con el propósito de conocer y revisar oportunamente el alcance de los proyectos finales, cada grupo deberá enviar, a más tardar el **jueves 29 de octubre de 2026**, un correo electrónico que contenga la siguiente información:
+Con el propósito de conocer y revisar oportunamente el alcance de los proyectos finales, cada grupo deberá enviar, a más tardar el **viernes 30 de octubre de 2026**, un correo electrónico que contenga la siguiente información:
 
 1. **Título del proyecto:** nombre que identifique claramente el problema o la aplicación que se pretende desarrollar.
 2. **Objetivo general:** declaración precisa del propósito principal del proyecto, indicando qué se busca alcanzar mediante la implementación de técnicas de Deep Learning.
