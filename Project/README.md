@@ -8,8 +8,8 @@ Les solicito leer cuidadosamente la siguiente información, especialmente lo rel
 
 | Actividad | Fecha o período | Medio de entrega |
 | --- | --- | --- |
-| Entrega preliminar: título y objetivos | Jueves 29 de octubre de 2026 | Correo electrónico del profesor |
-| Entrega de la presentación y del informe final | Miércoles 11 de noviembre de 2026 | Correo electrónico del profesor |
+| Entrega preliminar: título y objetivos | Jueves 29 de octubre de 2026 | Buzón interactiva |
+| Entrega de la presentación y del informe final | Miércoles 11 de noviembre de 2026 | Buzón interactiva |
 | Sustentaciones de los proyectos finales | Semanas 17 y 18 | Según la programación de sustentaciones |
 
 La fecha límite para entregar **tanto la presentación como el informe final** será el **miércoles 11 de noviembre de 2026**, independientemente de la semana en la que tengan programada su sustentación. Ambos documentos deberán ser enviados a mi correo electrónico a más tardar en esa fecha.
