@@ -132,6 +132,9 @@ Course Repository SI3014 Neural Networks and Deep Learning at Universidad EAFIT
   
 **Workshop02 - Transfer Learning**
 - [Workshop 02](Homeworks/Workshop/Laboratorio#2-DL.pdf)
+  
+**Workshop03 - Fine-tuning de LLMs (SFT + LoRA)**
+- [Workshop 03](Homeworks/Taller-SFT-LoRA/README.md)
 
       
 # Resources:
